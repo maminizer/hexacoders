@@ -1,3 +1,4 @@
+![banner](/Marketing/ressources/affiche.png)
 
 #  Documentation
 cette répertoire contient les fichiers de conception et code du **Projet Integré** pour les étudiants de 3éme année en ESPRIT réalisé par :
