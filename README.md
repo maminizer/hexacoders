@@ -8,9 +8,9 @@ cette répertoire contient les fichiers de conception et code du **Projet Integr
 - [Yahyaoui Hosny](https://github.com/hosniyahyaoui) 
 
 ##  Sommaire
-- [Architecture de projet](https://github.com/maminizer/hexacoders/tree/main#)
- -- [les technologies utilisées](https://github.com/maminizer/hexacoders/tree/main#)
- -- [la répartition du projet ](https://github.com/maminizer/hexacoders/tree/main#)
+1- [Architecture de projet](https://github.com/maminizer/hexacoders/tree/main#)
+- [les technologies utilisées](https://github.com/maminizer/hexacoders#les-technologies-utilis%C3%A9es)
+- [la répartition du projet ](https://github.com/maminizer/hexacoders#la-r%C3%A9partition-du-projet)
 
 ##  Architecture de projet
 
@@ -23,15 +23,15 @@ les technologies utilisées pour réaliser ce projet :
 ###  la répartition du projet
 cette répertoire contient **3 branches** chacune contient une partie spécifique du projet:
 
-| Branche | Descripion| README 
+| Branche | Descripion| Lien 
 | ------ | ------ |------ |
-| Main |contient les fichiers de conception | [README][main] 
-| Desktop |contient le code **Java** du projet| [README][desktop]  |
-| Mobile| Contient le code **Codename one** du projet |[README][mobile]  |
-| Web | contient le code **Symfony** du projet |[README][web]  |
+| Main |contient les fichiers de conception | [Main][main] 
+| Desktop |contient le code **Java** du projet| [Desktop][desktop]  |
+| Mobile| Contient le code **Codename one** du projet |[Mobile][mobile]  |
+| Web | contient le code **Symfony** du projet |[Web][web]  |
 
 
 [main]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-[desktop]: <https://github.com/maminizer/hexacoders/blob/main/README.md>
-[mobile]: <https://github.com/maminizer/hexacoders/blob/Mobile/README.md>
-[web]: <https://github.com/maminizer/hexacoders/blob/web/README.md>
+[desktop]: <https://github.com/maminizer/hexacoders/tree/main>
+[mobile]: <https://github.com/maminizer/hexacoders/tree/Mobile>
+[web]: <https://github.com/maminizer/hexacoders/tree/Web>
