@@ -4,14 +4,13 @@ cette répertoire contient les fichiers de conception et code du **Projet Integr
 - [Mami Amine](https://github.com/maminizer) 
 - [Saighi Mohamed Amine](https://github.com/amine01-swervo) 
 - [Trifi Yossr](https://github.com/yossr-tr) 
-- [Wahada Anas](https://github.com/houcemhamed453) 
+- [Wahada Anas](https://github.com/AnasWahada07) 
 - [Yahyaoui Hosny](https://github.com/hosniyahyaoui) 
 
 ##  Sommaire
-1- [Architecture de projet](https://github.com/maminizer/hexacoders/tree/main#)
-- [les technologies utilisées](https://github.com/maminizer/hexacoders#les-technologies-utilis%C3%A9es)
-- [la répartition du projet ](https://github.com/maminizer/hexacoders#la-r%C3%A9partition-du-projet)
-
+- [Architecture de projet](https://github.com/maminizer/hexacoders#architecture-de-projet)
+  - [les technologies utilisées](https://github.com/maminizer/hexacoders#les-technologies-utilis%C3%A9es)
+  - [la répartition du projet ](https://github.com/maminizer/hexacoders#la-r%C3%A9partition-du-projet)
 ##  Architecture de projet
 
 ###  les technologies utilisées
@@ -31,7 +30,7 @@ cette répertoire contient **3 branches** chacune contient une partie spécifiqu
 | Web | contient le code **Symfony** du projet |[Web][web]  |
 
 
-[main]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-[desktop]: <https://github.com/maminizer/hexacoders/tree/main>
+[main]: <https://github.com/maminizer/hexacoders/tree/main>
+[desktop]: <https://github.com/maminizer/hexacoders/tree/Desktop>
 [mobile]: <https://github.com/maminizer/hexacoders/tree/Mobile>
 [web]: <https://github.com/maminizer/hexacoders/tree/Web>
