@@ -8,7 +8,7 @@ cette répertoire contient les fichiers de conception et code du **Projet Integr
 - [Yahyaoui Hosny](https://github.com/hosniyahyaoui) 
 
 ##  Sommaire
-- [Architecture de projet](https://github.com/maminizer/hexacoders/tree/main#)
+- [Architecture de projet](https://github.com/maminizer/hexacoders#architecture-de-projet)
   - [les technologies utilisées](https://github.com/maminizer/hexacoders#les-technologies-utilis%C3%A9es)
   - [la répartition du projet ](https://github.com/maminizer/hexacoders#la-r%C3%A9partition-du-projet)
 ##  Architecture de projet
