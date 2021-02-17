@@ -1,4 +1,4 @@
-<img src="/Marketing/ressources/affiche.png" width="800" height="400">
+
 #  Documentation
 cette répertoire contient les fichiers de conception et code du **Projet Integré** pour les étudiants de 3éme année en ESPRIT réalisé par :
 - [Hamed Houcem](https://github.com/houcemhamed453) 
