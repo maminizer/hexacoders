@@ -2479,3 +2479,17 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 	padding: 6px;
 }
 /* =====  END RESPONSIVE CSS  =====*/
+
+}
+#registration_username {
+	width : 100%;
+}
+#registration_email {
+	width : 100%;
+}
+#registration_password {
+	width : 100%;
+}
+#registration_confirm_password {
+	width : 100%;
+}
