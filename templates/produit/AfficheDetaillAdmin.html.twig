@@ -1,0 +1,63 @@
+{% extends 'baseA.html.twig' %}
+{% block body %}
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Appercu</th>
+        <th>Descreption</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th>En vente</th>
+
+
+
+    </tr>
+    <tr>
+        <td>{{ produit.id }}</td>
+        <td>{{ produit.nom }}</td>
+        <td><img src ="{{ asset('uploads/images/' ~ produit.image) }}"
+                 alt ="" style = "width:100px ; height:100px"></td>
+        <td>{{ produit.description }}</td>
+        <td>{{ produit.prix | number_format(0, ',', ' ') }} DT</td>
+        <td>{{ produit.quantite }}</td>
+        <td>{% if produit.EnVente == '1' %}
+                <span>disponible</span>
+            {% elseif produit.EnVente == '0' %}
+                <span>non disponible</span>
+            {% endif %}</td>
+        <td> <a href="{{ path('update',{'id':produit.id}) }}"> Update </a> </td>
+        <td> <a href="{{ path('d',{'id':produit.id}) }}"> Delete </a> </td>
+
+
+    </tr>
+
+</table>
+<section id="commentaires">
+    <table>
+        <tr {% for commentaire in produit.commentaires %} >
+            <div class="commentaire">
+                <div class="row">
+                    <div class="col-3">
+                        {{commentaire.id}}
+                    </div>
+                    <div class="col">
+                        {{commentaire.contenu | raw}}
+                    </div>
+                    <div class="col-3">
+                        <a href="{{ path('modifierCommentaireAdmin',{'id':commentaire.id}) }}"> Modifier </a>
+                    </div>
+                    <div class="col-3">
+                        <a href="{{ path('SupprimerCommentaire',{'id':commentaire.id}) }}"> Supprimer </a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </tr {% endfor %} >
+    </table>
+    <a href="{{ path('ajoutCommentaireA',{'id':produit.id}) }}"> ajouter un nouveaux Commentaire </a>
+
+    <a href="{{ path('AfficheProduit') }}"> Retour</a>
+</section>
+{% endblock %}

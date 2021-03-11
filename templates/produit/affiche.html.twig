@@ -1,0 +1,53 @@
+{% extends 'baseA.html.twig' %}
+{% block body %}
+    <input type="text" id="search" class="form-control" placeholder="Recherche" style="margin-top: 2rem;">
+    <hr>
+
+<table border="1" id="t">
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Descreption</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th>En vente</th>
+        <th>appercu</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tbody id="all">
+    <tr {% for p in produit %}>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nom }}</td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.prix | number_format(0, ',', ' ') }} DT</td>
+        <td>{{ p.quantite }}</td>
+        <td>{% if p.EnVente == '1' %}
+                <span>disponible</span>
+            {% elseif p.EnVente == '0' %}
+                <span>non disponible</span>
+            {% endif %}</td>
+        <td><img src ="{{ asset('uploads/images/' ~ p.image) }}"
+        alt ="" style = "width:100px ; height:100px"></td>
+        <td> <a href="{{ path('update',{'id':p.id}) }}"> Update </a> </td>
+        <td> <a href="{{ path('d',{'id':p.id}) }}"> Delete </a> </td>
+        <td> <a href="{{ path('AfficheProduitAdminDetaill',{'id':p.id}) }}"> Detaill </a> </td>
+
+    </tr {% endfor %}>
+    </tbody>
+<tbody id="search"></tbody>
+</table>
+ <a href="{{ path('ajout') }}"> ajouter un nouveaux Produit </a>
+    <script>
+        $(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#all tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+{% endblock %}
+

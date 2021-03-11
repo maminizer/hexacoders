@@ -1,0 +1,29 @@
+
+{% extends 'baseA.html.twig' %}
+{% form_theme formU 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    {{ form_start(formU,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <h1>Ajout d'un produit</h1>
+    {{ form_errors(formU.nom) }}
+    {{ form_label(formU.nom, "Nom du Produit") }}
+    {{ form_widget(formU.nom) }}
+
+    {{ form_errors(formU.description) }}
+    {{ form_label(formU.description, "Description du Produit") }}
+    {{ form_widget(formU.description) }}
+
+    {{ form_errors(formU.prix) }}
+    {{ form_label(formU.prix, "Prix du Produit") }}
+    {{ form_widget(formU.prix) }}
+
+    {{ form_errors(formU.quantite) }}
+    {{ form_label(formU.quantite, "Quantité du Produit") }}
+    {{ form_widget(formU.quantite) }}
+
+    {{ form_errors(formU.EnVente) }}
+    {{ form_label(formU.EnVente, "Disponibilité du Produit") }}
+    {{ form_widget(formU.EnVente) }}
+
+
+    {{ form_end(formU) }}
+{% endblock %}

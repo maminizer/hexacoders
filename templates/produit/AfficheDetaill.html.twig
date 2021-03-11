@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row mt_10 ">
+    <div class="col-md-6">
+
+    <div>
+    <img src ="{{ asset('uploads/images/' ~ produit.image) }}"
+         alt ="" >
+    </div></div>
+    <div class="col-md-6 prodetail caption product-thumb">
+    <h4 data-name="product_name" class="product-name">{{ produit.nom }}</h4>
+        <span></span>
+        <span class="price mb_20"><span class="amount">{{ produit.prix| number_format(0, ',', ' ') }}<span class="currencySymbol">DT</span></span>
+              </span>
+        <hr>
+        <ul class="list-unstyled product_info mtb_20">
+            <li><label>Disponibilité :</label>
+                {% if produit.EnVente == '1' %}
+                    <span>En Vente</span>
+                {% elseif produit.EnVente == '0' %}
+                    <span>non disponible</span>
+                {% endif %}</li>
+        </ul>
+        <hr>
+        <p class="product-desc mtb_30"> {{ produit.description }} </p>
+        <hr>
+        <ul class="list-unstyled product_info mtb_20">
+            <li><label>Quantité:</label>
+                <span> {{ produit.quantite }}</span></li>
+        </ul>
+        <hr>
+
+        <a> Ajout au Panier </a>
+    </div>
+
+    </div>
+
+
+<hr>
+    {% for commentaire in produit.commentaires %}
+        <hr>
+    <div class="">
+    <div class="col-md-12">
+    <div id="exTab5" class="mtb_30">
+        <div class="commentaire">
+            <div class="">
+                <div class=""><p>   </p>
+                         {{commentaire.id}}
+                </div>
+                <div class="">
+                    <p>   Contenu du commentaire: </p> {{commentaire.contenu | raw}}
+                    <a href="{{ path('modifierCommentaire',{'id':commentaire.id}) }}"> Modifier </a>
+                </div>
+
+            </div>
+        </div> <hr>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+    <hr>
+
+    <a href="{{ path('ajoutCommentaireC',{'id':produit.id}) }}"> ajouter un nouveaux Commentaire </a>
+    <hr>
+
+
+    <a href="{{ path('AfficheProduitClient') }}"> Retour</a>
+
+
+{% endblock %}

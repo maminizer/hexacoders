@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+<h1> la liste des produits</h1>
+
+
+    {% for p in produit %}
+
+        <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+        <div class="item">
+
+        <div class="image product-imageblock"><a href="{{ path('AfficheProduitClientDetaill',{'id':p.id}) }}">
+        <img src ="{{ asset('uploads/images/' ~ p.image) }}"
+             alt ="" style = "width:100px ; height:100px" class="img-responsive"> </a></div>
+                    <hr>
+                <div class="caption product-detail text-left">
+                    <h6 data-name="product_name" class="product-name mt_20">
+                        {{ p.nom }}</h6>
+                    <span class="price"><span class="amount">{{ p.prix | number_format(0, ',', ' ') }}</span><span class="currencySymbol">DT</span>
+                    </span>
+                    <div class="button-group text-center">
+
+
+                        <div class="add-to-cart"><a href="#"><span>Ajouter au panier</span></a></div>
+                    </div>
+
+
+                </div>
+
+        </div>
+        </div>
+
+    {% endfor %}
+
+  {% block recherche %}
+      {{ form_start(formRecherche) }}
+      {{ form_widget(formRecherche.q) }}
+      {{ form_end(formRecherche) }}
+
+
+  {% endblock %}
+
+
+{% endblock %}
+
+{% block filterLeft %}
+    <div class="heading-part mtb_20 ">
+        <h2 class="main_title">Refinr Search</h2>
+    </div>
+    <div class="filter-block">
+
+
+        <p>
+
+            <input type="text" id="amount" readonly>
+        </p>
+        <div id="slider-range" class="mtb_20"></div>
+        <div class="list-group">
+            <div class="list-group-item mb_10">
+                {{ form_start(formFiltre) }}
+                <div id="filter-group1">
+                    {{ form_label(formFiltre.EnVente, "Disponibilité du Produit") }}
+                    <div class="checkbox" >
+                        <label> En Vente:  {{ form_row(formFiltre.EnVente) }}</label>
+                    </div>
+                </div>
+                <div id="filter-group1">
+                    <label for="amount">Price range:</label>
+                    <div class="row" >
+                        <div class="col-md-6">
+                        {{ form_row(formFiltre.min) }}
+                            {{ form_row(formFiltre.max) }}
+                        </div>
+                    </div>
+            </div>
+                <br>
+                <button type="submit" class="btn">Filtrer</button>
+                {{ form_end(formFiltre) }}
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
+{% block pagination %}
+    {{ knp_pagination_render(produit) }}
+{% endblock %}

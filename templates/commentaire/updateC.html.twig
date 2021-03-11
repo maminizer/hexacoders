@@ -1,0 +1,12 @@
+<h1>Modifier un commentaire </h1>
+
+{{ form_start(f) }}
+
+    {{ form_row(f.contenu, {'attr' : { 'placeholder' : "contenu de commentaire"} })    }}
+    {{ form_row(f.produit)   }}
+
+
+<button type="submit" class="btn btn-danger">
+    Enregister
+</button>
+{{ form_end(f) }}

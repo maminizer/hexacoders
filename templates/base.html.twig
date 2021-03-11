@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <!-- =====  BASIC PAGE NEEDS  ===== -->
+    <meta charset="utf-8">
+    {% block title %}
+    <title>TuniPharma</title>
+    {% endblock %}
+    <!-- =====  SEO MATE  ===== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="distribution" content="global">
+    <meta name="revisit-after" content="2 Days">
+    <meta name="robots" content="ALL">
+    <meta name="rating" content="8 YEARS">
+    <meta name="Language" content="en-us">
+    <meta name="GOOGLEBOT" content="NOARCHIVE">
+    <!-- =====  MOBILE SPECIFICATION  ===== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width">
+    <!-- =====  CSS  ===== -->
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}" />
+    <script src="{{  asset('https://use.fontawesome.com/1509af9ee1.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/apple-touch-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('images/apple-touch-icon-114x114.png') }}">
+    {% endblock %}
+</head>
+
+<body>
+<!-- =====  LODER  ===== -->
+<div class="loder"></div>
+
+<!-- =====  HEADER START  ===== -->
+<header id="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="header-top-left">
+                        <li class="language dropdown"> <span class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button"> <img src="{{ asset('images/French-icon.gif') }}" alt="img"> Francais <span class="caret"></span> </span>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#"><img src="{{ asset('images/French-icon.gif') }}" alt="img"> Francais</a></li>
+                                <li><a href="#"><img src="{{ asset('images/English-icon.gif') }}" alt="img"> Englais</a></li>
+
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="header-top-right text-right">
+                        <li class="account"><a href="">Mon compte</a></li>
+
+                        <li class="cart"><a href="">Mon Panier</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-header mtb_20"> <a class="navbar-brand" href="index.html.twig"><h1> TuniPharma </h1></a> </div>
+                <div class="header-right pull-right mtb_50">
+                    <button class="navbar-toggle pull-left" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="i-bar"><i class="fa fa-bars"></i></span></button>
+                    <div class="shopping-icon">
+                        <div class="cart-item " data-target="#cart-dropdown" data-toggle="collapse" aria-expanded="true" role="button">Panier </div>
+                        <div id="cart-dropdown" class="cart-menu collapse">
+                            <ul>
+                                <li>
+                                    <table class="table table-striped">
+                                        <tbody>
+                                        <tr>
+                                            <td class="text-center"><a href=""><img src="{{ asset('images/product/70x84.jpg') }}" alt="iPod Classic" title="iPod Classic"></a></td>
+                                            <td class="text-left product-name"><a href="">MacBook Pro</a>
+                                                <span class="text-left price">$20.00</span>
+                                                <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
+                                            </td>
+                                            <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center"><a href=""><img src="{{ asset('images/product/70x84.jpg') }}" alt="iPod Classic" title="iPod Classic"></a></td>
+                                            <td class="text-left product-name"><a href="">MacBook Pro</a>
+                                                <span class="text-left price">$20.00</span>
+                                                <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
+                                            </td>
+                                            <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                                <li>
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td class="text-right"><strong>Sub-Total</strong></td>
+                                            <td class="text-right">$2,100.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
+                                            <td class="text-right">$2.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-right"><strong>VAT (20%)</strong></td>
+                                            <td class="text-right">$20.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-right"><strong>Total</strong></td>
+                                            <td class="text-right">$2,122.00</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                                <li>
+                                    <form action="cart_page.html">
+                                        <input class="btn pull-left mt_10" value="View cart" type="submit">
+                                    </form>
+                                    <form action="checkout_page.html">
+                                        <input class="btn pull-right mt_10" value="Checkout" type="submit">
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-search pull-right">
+                        <div class="search-overlay">
+                            <!-- Close Icon -->
+                            <a href="javascript:void(0)" class="search-overlay-close"></a>
+                            <!-- End Close Icon -->
+                            <div class="container">
+                                <!-- Search Form -->
+                                {% block recherche %}
+
+                                {% endblock %}
+                                <!-- End Search Form -->
+                            </div>
+                        </div>
+                        <div class="header-search"> <a id="search-overlay-btn"></a> </div>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse js-navbar-collapse pull-right">
+                    <ul id="menu" class="nav navbar-nav">
+                        <li> <a href="">Accueil</a></li>
+                        <li> <a href="{{ path('AfficheProduitClient') }}">Produits</a></li>
+                        <li class="dropdown mega-dropdown"> <a href="" class="dropdown-toggle" data-toggle="dropdown">Collection </a>
+                            <ul class="dropdown-menu mega-dropdown-menu row">
+
+
+
+                                <li class="col-md-3">
+                                    <ul>
+                                        <li id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="item active"> <a href=""><img src="{{ asset('images/menu-banner1.jpg') }}" class="img-responsive" alt="Banner1"></a></div>
+                                                <!-- End Item -->
+                                                <div class="item"> <a href=""><img src="{{ asset('images/menu-banner2.jpg') }}" class="img-responsive" alt="Banner1"></a></div>
+                                                <!-- End Item -->
+                                                <div class="item"> <a href=""><img src="{{ asset('images/menu-banner3.jpg') }}" class="img-responsive" alt="Banner1"></a></div>
+                                                <!-- End Item -->
+                                            </div>
+                                            <!-- End Carousel Inner -->
+                                        </li>
+                                        <!-- /.carousel -->
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li> <a href="">A propos</a></li>
+                    </ul>
+                </div>
+                <!-- /.nav-collapse -->
+            </nav>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-3">
+                    <div class="category">
+                        <div class="menu-bar" data-target="#category-menu,#category-menu-responsive" data-toggle="collapse" aria-expanded="true" role="button">
+                            <h4 class="category_text"></h4>
+                            <span class="i-bar"><i class="fa fa-bars"></i></span></div>
+                    </div>
+                    <div id="category-menu-responsive" class="navbar collapse " aria-expanded="true" style="" role="button">
+                        <div class="nav-responsive">
+                            <ul class="nav  main-navigation collapse in">
+                                <li><a href="">Pharmacy</a></li>
+                                <li><a href="">Health</a></li>
+                                <li><a href="">Beauty</a></li>
+                                <li><a href="">Vitamins</a></li>
+                                <li><a href="">Sweating</a></li>
+                                <li><a href="">Coughs & Colds</a></li>
+                                <li><a href="">Hair Loss</a></li>
+                                <li><a href="">Weight Loss</a></li>
+                                <li><a href="">Antifungals</a></li>
+                                <li><a href="">Pain Relief</a></li>
+                                <li><a href="">Stop Smoking</a></li>
+                                <li><a href="">Skin Conditions</a></li>
+                                <li><a href="">Top Brands</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-9">
+                    <div class="header-bottom-right offers">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- =====  HEADER END  ===== -->
+<!-- =====  CONTAINER START  ===== -->
+
+<div class="container">
+    <div class="row">
+        <div id="column-left" class="col-sm-4 col-md-4 col-lg-3 ">
+            <div class="filter left-sidebar-widget mb_50">
+        {% block filterLeft %}
+        {% endblock %}
+            </div>
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-9 mtb_30">
+
+
+            <div class="category-page-wrapper mb_30">
+
+                {% block body %}
+                {% endblock %}
+    </div>
+</div>
+        <div class="pagination-nav text-center mt_50" >
+            {% block pagination %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<!-- =====  CONTAINER END  ===== -->
+<!-- =====  FOOTER START  ===== -->
+<div class="footer pt_60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 footer-block">
+                <div class="content_footercms_right">
+                    <div class="footer-contact">
+
+                        <h6 class="footer-title ptb_20">Nos service client a votre ecoute</h6>
+                        <ul>
+
+                            <li>(+216) 53 046 331</li>
+                            <li>hexacoders@gmail.com</li>
+                        </ul>
+                        <div class="social_icon">
+                            <ul>
+                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                                <li><a href=""><i class="fa fa-google"></i></a></li>
+                                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                <li><a href=""><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 footer-block">
+                <h6 class="footer-title ptb_20">Information</h6>
+                <ul>
+                    <li><a href="">Promotions</a></li>
+                    <li><a href="">Nouveaux Produits</a></li>
+                    <li><a href="">Contactez-nous</a></li>
+                    <li><a href="">A propos</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 footer-block">
+                <h6 class="footer-title ptb_20">Mon compte</h6>
+                <ul>
+                    <li><a href="">Paiement</a></li>
+                    <li><a href="">Mon compte</a></li>
+                    <li><a href="">Mes commandes</a></li>
+                    <li><a href="">Mes fichiers de credit</a></li>
+                    <li><a href="">Mes adresses</a></li>
+                    <li><a href="">Mes informations personnelles</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 footer-block">
+                <h6 class="footer-title ptb_20">Marques</h6>
+                <ul>
+                    <li><a href="">SVR</a></li>
+                    <li><a href="">FILORGA</a></li>
+                    <li><a href="">DERMEDIC</a></li>
+                    <li><a href="">NOVEXPERT</a></li>
+                    <li><a href="">ACM</a></li>
+                    <li><a href="">Neutrogena</a></li>
+                    <li><a href="">sesderma</a></li>
+                    <li><a href="">Nihel</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom mt_60 ptb_10">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- =====  FOOTER END  ===== -->
+</div>
+<a id="scrollup">Scroll</a>
+<script src="{{ asset('js/jQuery_v3.1.1.min.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.magnific-popup.js') }}"></script>
+<script src="{{ asset('js/jquery.firstVisitPopup.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+<script>
+    $(function() {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [ 0, 500],
+            slide: function(event, ui) {
+                $("#amount").val( ui.values[0] + "DT" +" - " + ui.values[1] + "DT");
+            }
+        });
+        $("#amount").val( $("#slider-range").slider("values", 0) +" DT" +
+            " - " + $("#slider-range").slider("values", 1) + " DT");
+    });
+</script>
+</body>
+
+</html>
