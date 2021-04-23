@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="AnchorComm" prefHeight="530.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CommentaireController">
+   <children>
+      <TableView fx:id="TableCommentaire" layoutX="294.0" layoutY="265.0" prefHeight="250.0" prefWidth="357.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="52.0" text="ID" />
+          <TableColumn fx:id="colIdProduit" prefWidth="69.0" text="ID Produit" />
+            <TableColumn fx:id="colContenu" prefWidth="293.0" text="Contenu" />
+        </columns>
+      </TableView>
+      <HBox layoutX="15.0" layoutY="390.0" prefHeight="71.0" prefWidth="211.0">
+         <children>
+            <VBox prefHeight="242.0" prefWidth="66.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="66.0" text="Contenu:" />
+               </children>
+            </VBox>
+            <VBox prefHeight="60.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="TfContenu" prefHeight="79.0" prefWidth="100.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="23.0" layoutY="474.0" prefHeight="34.0" prefWidth="194.0" spacing="12.0">
+         <children>
+            <Button fx:id="BtnAdd" mnemonicParsing="false" onAction="#AjouterCommentaire" text="Ajouter" />
+            <Button fx:id="BtnUpdate" mnemonicParsing="false" onAction="#ModifierCommentaire" text="Update" />
+            <Button fx:id="BtnDell" mnemonicParsing="false" onAction="#SupprimerCommentaire" text="Delete" />
+         </children>
+      </HBox>
+      <Button fx:id="BtnBack" layoutX="675.0" layoutY="496.0" mnemonicParsing="false" onAction="#Back" text="Back" />
+      <Label layoutX="34.0" layoutY="285.0" prefHeight="36.0" prefWidth="181.0" text="Commentaire" textFill="#000000a1">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <GridPane alignment="TOP_CENTER" layoutX="342.0" layoutY="68.0" prefHeight="171.0" prefWidth="294.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="263.0" minWidth="10.0" prefWidth="70.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="553.0" minWidth="10.0" prefWidth="224.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="17.0" prefWidth="28.0" text="Title" />
+            <Label fx:id="labTitle" text="Label" GridPane.columnIndex="1" />
+            <Label text="Prix" GridPane.rowIndex="1" />
+            <Label fx:id="labPrice" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label prefHeight="17.0" prefWidth="86.0" text="Description" GridPane.rowIndex="4" />
+            <Label text="En Vente" GridPane.rowIndex="2" />
+            <Label text="Quantité" GridPane.rowIndex="3" />
+            <Label fx:id="labEnvente" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="labQuantity" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="labDescription" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <ImageView fx:id="imageview" fitHeight="206.0" fitWidth="236.0" layoutX="15.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="33.0" layoutY="24.0" prefHeight="36.0" prefWidth="245.0" text="Détaill du produit" textFill="#000000a1">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
