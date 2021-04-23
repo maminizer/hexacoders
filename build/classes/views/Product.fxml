@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="AnchorProd" prefHeight="614.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProductController">
+   <children>
+      <TableView fx:id="TableProducts" layoutX="232.0" layoutY="61.0" prefHeight="251.0" prefWidth="527.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="colImage" prefWidth="75.0" text="Image" />
+            <TableColumn fx:id="colTitle" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="colPrice" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="colEnvente" prefWidth="75.0" text="En Vente" />
+            <TableColumn fx:id="colQuantity" prefWidth="75.0" text="Quantité" />
+            <TableColumn fx:id="colDescription" prefWidth="75.0" text="Description" />
+        </columns>
+      </TableView>
+      <Button fx:id="BtnComments" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#comment" text="Comments" />
+      <Label layoutX="28.0" layoutY="14.0" prefHeight="36.0" prefWidth="141.0" text="Produits" textFill="#000000a1">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <VBox layoutX="38.0" layoutY="68.0" prefHeight="282.0" prefWidth="175.0">
+         <children>
+            <HBox prefHeight="217.0" prefWidth="174.0">
+               <children>
+                  <VBox prefHeight="228.0" prefWidth="65.0" spacing="17.0">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="51.0" text="Title" />
+                        <Label prefHeight="22.0" prefWidth="46.0" text="Price" />
+                        <Label prefHeight="17.0" prefWidth="64.0" text="En Vente" />
+                        <Label prefHeight="17.0" prefWidth="56.0" text="Quantité" />
+                        <Label prefHeight="8.0" prefWidth="65.0" text="Description" />
+                        <Button fx:id="Image" mnemonicParsing="false" onAction="#addImage" text="Image" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="228.0" prefWidth="100.0" spacing="12.0">
+                     <children>
+                        <TextField fx:id="TfTitle" />
+                        <TextField fx:id="TfPrice" />
+                        <TextField fx:id="TfEnvente" />
+                        <TextField fx:id="TfQuantity" />
+                        <TextField fx:id="TfDescription" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField fx:id="pathfile" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="175.0">
+               <children>
+                  <Button fx:id="BtnAdd" mnemonicParsing="false" onAction="#AddProduct" text="Ajouter" />
+                  <Button fx:id="BtnUpdate" mnemonicParsing="false" onAction="#UpdateProduct" text="Modifer" />
+                  <Button fx:id="BtnDell" mnemonicParsing="false" onAction="#DeleteProduct" text="Delete" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TextField fx:id="TfRecherche" layoutX="392.0" layoutY="32.0" onAction="#RechercheProduct" text="Recherche" />
+      <Button layoutX="99.0" layoutY="338.0" mnemonicParsing="false" onAction="#GestionProduct" text="Gestion produits" />
+   </children>
+</AnchorPane>
