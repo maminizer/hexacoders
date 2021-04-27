@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CartController">
+   <children>
+      <TableView fx:id="table" prefHeight="606.0" prefWidth="483.0">
+         <columns>
+            <TableColumn fx:id="colTitle" prefWidth="161.5999755859375" text="Title" />
+            <TableColumn fx:id="colPrice" prefWidth="168.00006103515625" text="Price" />
+            <TableColumn fx:id="colQuantity" prefWidth="150.39998779296877" text="Quantity" />
+         </columns>
+      </TableView>
+      <Button layoutX="584.0" layoutY="349.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="50.0" prefWidth="171.0" text="Back To Home">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="584.0" layoutY="291.0" mnemonicParsing="false" onAction="#RemoveProduct" prefHeight="50.0" prefWidth="171.0" text="Remove Product">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="584.0" layoutY="108.0" mnemonicParsing="false" onAction="#UpdateQte" prefHeight="50.0" prefWidth="171.0" text="update qte">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="577.0" layoutY="35.0" prefHeight="54.0" prefWidth="218.0" text="select and update quantity">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="QuantityUpdateField" layoutX="588.0" layoutY="76.0" />
+      <Label fx:id="afficheTotal" layoutX="580.0" layoutY="472.0" prefHeight="44.0" prefWidth="211.0" text="3333">
+         <font>
+            <Font name="Cambria" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="581.0" layoutY="442.0" prefHeight="44.0" prefWidth="82.0" text="prix total">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfSearch" layoutX="588.0" layoutY="213.0" />
+      <Label layoutX="588.0" layoutY="193.0" text="Shearch box">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="577.0" layoutY="516.0" mnemonicParsing="false" onAction="#Checkout" prefHeight="50.0" prefWidth="171.0" text="Checkout">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

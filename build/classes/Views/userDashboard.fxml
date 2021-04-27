@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserDashboardController">
+   <children>
+      <Label layoutX="358.0" layoutY="102.0" text="This is a User Dashboard" />
+      <Button fx:id="logout" layoutX="735.0" layoutY="29.0" mnemonicParsing="false" onAction="#back" text="Se deconnecter" />
+      <Button layoutX="735.0" layoutY="98.0" mnemonicParsing="false" onAction="#checkProduct" prefHeight="35.0" prefWidth="109.0" text="consulter Produit" />
+   </children>
+</AnchorPane>
