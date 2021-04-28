@@ -1,5 +1,6 @@
 package Entities;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 
 /**
@@ -42,6 +43,28 @@ public class Product {
         this.categorie_id = categorie_id;
         this.image = image;
     }
+
+    
+
+    public Product(String titleval, FileInputStream imageJ, float price, int quantity, int en_vente, String description) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+        this.quantity = quantity;
+        this.imageJ = imageJ;
+        this.en_vente = en_vente;
+        this.description = description;
+        this.categorie_id = categorie_id;
+        this.image = image;
+    }
+
+//    public Product(String title, int price, int quantity, int envente, String description) {
+//        this.title = title;
+//        this.price = price;
+//        this.quantity = quantity;
+//        this.en_vente = envente;
+//        this.description = description;
+//    }
 
     public InputStream getImageJ() {
         return imageJ;
@@ -86,6 +109,16 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
     }
+
+    public Product(String title, float price, int quantity, int en_vente, String description) {
+        this.title = title;
+        this.price = price;
+        this.quantity = quantity;
+        this.en_vente = en_vente;
+        this.description = description;
+    }
+    
+    
     
 
     public int getId() {

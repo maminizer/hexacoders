@@ -21,7 +21,7 @@ public class DbConnect {
     
     private static String HOST = "127.0.0.1";
         private static int PORT = 3306;
-        private static String DB_NAME = "tunipharma4";
+        private static String DB_NAME = "tunipharma3";
         private static String USERNAME = "root";
         private static String PASSWORD = "";
         private static Connection connection ;

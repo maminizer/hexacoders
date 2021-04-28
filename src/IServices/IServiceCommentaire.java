@@ -7,14 +7,15 @@ package IServices;
 
 import Entities.commentaire;
 import java.sql.SQLException;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author yossr
  */
 public interface IServiceCommentaire {
-          public void AddCommentaire(commentaire c);
+    public void AddCommentaire(commentaire c);
     public boolean DeleteCommentaire(int id);
-     public boolean UpdateCommentaire(commentaire p,int id);
+    public boolean UpdateCommentaire(commentaire p,int id);
     public ObservableList<commentaire>  AfficherCommentaire() throws SQLException;
 }
