@@ -134,9 +134,15 @@ public class PaiementController implements Initializable {
                 
                 notifsuccess("Felicitations votre paiement est effectuee ");
                 
+                
+                
+                
+                
                 FXMLLoader Home = new FXMLLoader(getClass().getResource("/Views/products.fxml"));
                 Parent HomeParent = (Parent) Home.load();
                 Scene HomeScene = new Scene(HomeParent);
+                ProductsController newUserName = Home.getController();
+//	        newUserName.sendData(username);
                 Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
                 window.setScene(HomeScene);
                 window.show();

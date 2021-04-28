@@ -50,6 +50,12 @@ import Services.CatalogueService;
 import Services.CategorieService;
 import Services.CoffretsService;
 import Utils.Maconnexion;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -57,7 +63,10 @@ import Utils.Maconnexion;
  * @author WIKI
  */
 public class AdminHomeController implements Initializable {
-
+    private Parent root;
+  private Scene scene;
+    private Stage stage;
+    private Stage primarystage; 
     @FXML
     private Tab catalog;
     @FXML
@@ -165,6 +174,15 @@ public class AdminHomeController implements Initializable {
     public File image;
     @FXML
     private Button listProduit;
+    private Button coffretClient;
+    @FXML
+    private Button btncoffretClient;
+    @FXML
+    private Button back;
+    @FXML
+    private Button back2;
+    @FXML
+    private Button back1;
 
     /**
      * Initializes the controller class.
@@ -449,13 +467,26 @@ public class AdminHomeController implements Initializable {
     }
 
     @FXML
-    private void handleButtonActionCoffrets(ActionEvent event) {
+    private void handleButtonActionCoffrets(ActionEvent event)  throws InterruptedException, IOException, SQLException{
         if (event.getSource() == badd1) {
             ajouterCoffre();
         } else if (event.getSource() == bupdate1) {
-          //  modifierCoffrets();
+            modifierCoffrets();
         } else if (event.getSource() == bdelete1) {
-          //  supprimerCoffrets();
+            supprimerCoffrets();
+        }else if(event.getSource()==btncoffretClient){
+          try {
+                //add you loading or delays - ;-)
+                    root = FXMLLoader.load(getClass().getResource("/Views/Coffrets.fxml"));
+                    stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                   
+                    stage.setScene(scene);
+                 
+                    stage.show();
+            } catch (IOException ex) {
+                System.err.println(ex.getMessage());
+            }
         }
 
     }
@@ -477,7 +508,7 @@ public class AdminHomeController implements Initializable {
         ttprix.setText("" + promo * somme);
     }
 
-   /* private void modifierCoffrets() {
+    private void modifierCoffrets() {
         String query = "UPDATE coffrets SET nom= '" + ttnom1.getText() + "',description ='" + ttdescription1.getText() + "',image ='" + txtpath1.getText() + "',prix=" + ttprix.getText() + ",offre=" + ttoffre.getText() + "WHERE id=" + ttid1.getText() + "";
         CoffretsService css = new CoffretsService();
         css.ajouterCoffrets(query);
@@ -491,7 +522,7 @@ public class AdminHomeController implements Initializable {
         showCoffret();
 
     }
-*/
+
     @FXML
     private void listProduit(ActionEvent event) throws SQLException{
              CoffretsService cs = new CoffretsService();
@@ -513,6 +544,16 @@ public class AdminHomeController implements Initializable {
         alert.setContentText(ch);
         alert.show();
         
+    }
+
+    @FXML
+    private void back(javafx.event.ActionEvent event) throws IOException {
+        Stage window = primarystage;
+        Parent rootRec2 = FXMLLoader.load(getClass().getResource("/Views/adminDashboard.fxml"));;
+        Scene rec2 = new Scene(rootRec2);
+        Stage app = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        app.setScene(rec2);
+        app.show();
     }
 
     }

@@ -65,6 +65,7 @@
                               <Image url="@icons8_delete_64px.png" />
                            </image>
                         </ImageView>
+                        <Button fx:id="back2" layoutX="14.0" layoutY="699.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="65.0" text="back" />
                      </children>
                   </AnchorPane>
             </content>
@@ -119,6 +120,7 @@
                               <Image url="@icons8_delete_64px.png" />
                            </image>
                         </ImageView>
+                        <Button fx:id="back1" layoutX="13.0" layoutY="708.0" mnemonicParsing="false" onAction="#back" text="back" />
                      </children>
                   </AnchorPane>
                </content>
@@ -127,8 +129,8 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="884.0" prefWidth="1069.0">
                      <children>
-                        <Button fx:id="badd1" layoutX="745.0" layoutY="629.0" mnemonicParsing="false" onAction="#handleButtonActionCoffrets" prefHeight="31.0" prefWidth="120.0" text="Ajouter" />
-                        <TableView fx:id="coffret1" layoutX="319.0" layoutY="47.0" onMouseClicked="#MouseActionCoffrets" prefHeight="555.0" prefWidth="756.0">
+                        <Button fx:id="badd1" layoutX="737.0" layoutY="569.0" mnemonicParsing="false" onAction="#handleButtonActionCoffrets" prefHeight="31.0" prefWidth="120.0" text="Ajouter" />
+                        <TableView fx:id="coffret1" layoutX="319.0" layoutY="47.0" onMouseClicked="#MouseActionCoffrets" prefHeight="315.0" prefWidth="756.0">
                            <columns>
                               <TableColumn fx:id="cid1" prefWidth="75.0" text="id" />
                               <TableColumn fx:id="cproduit1" minWidth="0.0" prefWidth="0.0" />
@@ -139,8 +141,8 @@
                               <TableColumn fx:id="coffre" prefWidth="71.0" text="offre" />
                            </columns>
                         </TableView>
-                        <Button fx:id="bdelete1" layoutX="592.0" layoutY="629.0" mnemonicParsing="false" onAction="#handleButtonActionCoffrets" prefHeight="31.0" prefWidth="120.0" text="supprimer" />
-                        <Button fx:id="bupdate1" layoutX="399.0" layoutY="629.0" mnemonicParsing="false" onAction="#handleButtonActionCoffrets" prefHeight="31.0" prefWidth="120.0" text="modifier" />
+                        <Button fx:id="bdelete1" layoutX="577.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleButtonActionCoffrets" prefHeight="31.0" prefWidth="120.0" text="supprimer" />
+                        <Button fx:id="bupdate1" layoutX="412.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleButtonActionCoffrets" prefHeight="31.0" prefWidth="120.0" text="modifier" />
                         <VBox layoutX="24.0" layoutY="1.0" prefHeight="640.0" prefWidth="80.0" spacing="45.0">
                            <children>
                               <Label prefHeight="21.0" prefWidth="0.0" />
@@ -168,22 +170,9 @@
                               <TextField fx:id="ttprix" />
                            </children>
                         </VBox>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="745.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons8_add_48px.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="399.0" layoutY="637.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons8_update_left_rotation_64px.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="592.0" layoutY="637.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons8_delete_64px.png" />
-                           </image>
-                        </ImageView>
-                        <Button fx:id="listProduit" layoutX="910.0" layoutY="630.0" mnemonicParsing="false" onAction="#listProduit" text="les Produis" />
+                        <Button fx:id="listProduit" layoutX="900.0" layoutY="569.0" mnemonicParsing="false" onAction="#listProduit" text="les Produis" />
+                        <Button fx:id="btncoffretClient" layoutX="463.0" layoutY="396.0" mnemonicParsing="false" onAction="#handleButtonActionCoffrets" prefHeight="31.0" prefWidth="120.0" text="CoffretClient" />
+                        <Button fx:id="back" layoutX="965.0" layoutY="396.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="54.0" text="Back" />
                      </children>
                   </AnchorPane>
                </content>
