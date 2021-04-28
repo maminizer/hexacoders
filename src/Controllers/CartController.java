@@ -40,8 +40,6 @@ import Services.ServiceCommande;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 
-
-
 /**
  * FXML Controller class
  *
@@ -57,21 +55,20 @@ public class CartController implements Initializable {
     private TableColumn<Cart, String> colPrice;
     @FXML
     private TableColumn<Cart, String> colQuantity;
-    
+
     String query = null;
-    Connection connection = null ;
-    PreparedStatement preparedStatement = null ;
-    ResultSet resultSet = null ;
-    
-    ObservableList<Cart>  CartList = FXCollections.observableArrayList();
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+
+    ObservableList<Cart> CartList = FXCollections.observableArrayList();
     @FXML
     private TextField QuantityUpdateField;
 
     ObservableList<Product> data = FXCollections.observableArrayList();
-    
-    
+
     private String username;
-    
+
     private float totalPrice;
     @FXML
     private Label afficheTotal;
@@ -81,14 +78,12 @@ public class CartController implements Initializable {
     public CartController() {
     }
 
-
-    
     public void sendData(String text) {
-		this.username = text;
-		System.out.println("cart   "+username); // verify username passed
-		CartData();
-	}
-    
+        this.username = text;
+        System.out.println("cart   " + username); // verify username passed
+        CartData();
+    }
+
 //    public void loadDatabase() {
 //
 //		Connection connection = null;
@@ -125,23 +120,21 @@ public class CartController implements Initializable {
 //			}
 //		}
 //	}
-
-
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         table.setOnMousePressed(new EventHandler<MouseEvent>() {
-                    
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				Cart selectedCart = table.getSelectionModel().getSelectedItem();
-			}
-		});
-    }    
+
+            @Override
+            public void handle(MouseEvent event) {
+                // TODO Auto-generated method stub
+                Cart selectedCart = table.getSelectionModel().getSelectedItem();
+            }
+        });
+    }
 
     @FXML
     private void BackToHome(ActionEvent event) throws IOException {
@@ -149,144 +142,137 @@ public class CartController implements Initializable {
         Parent HomeParent = (Parent) Home.load();
         Scene HomeScene = new Scene(HomeParent);
         Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-        
+
         ProductsController newUserName = Home.getController();
-	newUserName.sendData(username);
-        
+        newUserName.sendData(username);
+
         window.setScene(HomeScene);
         window.show();
-        
+
     }
-    
-    private void CartData(){
+
+    private void CartData() {
         try {
-            
-            
+
             colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
             colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
             colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-            
+
             ServiceCart sc = new ServiceCart();
             table.setItems(sc.AfficheCart(username));
-            
+
             //CartList1 = sc.AfficheCart(username);
             //table.getColumns().get(0).getCellData(0)
             //System.out.println("quantity  "+);
             CartList = sc.ReturnList();
-                    // Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<Cart> filteredData = new FilteredList<>(CartList, b -> true);
-		
-		// 2. Set the filter Predicate whenever the filter changes.
-		tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(Cart -> {
-				// If filter text is empty, display all persons.
-								
-				if (newValue == null || newValue.isEmpty()) {
-					return true;
-				}
-				
-				// Compare first name and last name of every person with filter text.
-				String lowerCaseFilter = newValue.toLowerCase();
-				
-				if (Cart.getTitle().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-					return true; // Filter matches first name.
-				} else if (String.valueOf(Cart.getPrice()).indexOf(lowerCaseFilter)!=-1) {
-					return true; // Filter matches last name.
-				}
-				else if (String.valueOf(Cart.getQuantity()).indexOf(lowerCaseFilter)!=-1)
-				     return true;
-				     else  
-				    	 return false; // Does not match.
-			});
-		});
-		
-		// 3. Wrap the FilteredList in a SortedList. 
-		SortedList<Cart> sortedData = new SortedList<>(filteredData);
-		
-		// 4. Bind the SortedList comparator to the TableView comparator.
-		// 	  Otherwise, sorting the TableView would have no effect.
-		sortedData.comparatorProperty().bind(table.comparatorProperty());
-		
-		// 5. Add sorted (and filtered) data to the table.
-		table.setItems(sortedData);
+            // Wrap the ObservableList in a FilteredList (initially display all data).
+            FilteredList<Cart> filteredData = new FilteredList<>(CartList, b -> true);
+
+            // 2. Set the filter Predicate whenever the filter changes.
+            tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(Cart -> {
+                    // If filter text is empty, display all persons.
+
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+
+                    // Compare first name and last name of every person with filter text.
+                    String lowerCaseFilter = newValue.toLowerCase();
+
+                    if (Cart.getTitle().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true; // Filter matches first name.
+                    } else if (String.valueOf(Cart.getPrice()).indexOf(lowerCaseFilter) != -1) {
+                        return true; // Filter matches last name.
+                    } else if (String.valueOf(Cart.getQuantity()).indexOf(lowerCaseFilter) != -1) {
+                        return true;
+                    } else {
+                        return false; // Does not match.
+                    }
+                });
+            });
+
+            // 3. Wrap the FilteredList in a SortedList. 
+            SortedList<Cart> sortedData = new SortedList<>(filteredData);
+
+            // 4. Bind the SortedList comparator to the TableView comparator.
+            // 	  Otherwise, sorting the TableView would have no effect.
+            sortedData.comparatorProperty().bind(table.comparatorProperty());
+
+            // 5. Add sorted (and filtered) data to the table.
+            table.setItems(sortedData);
 
             totalPrice = sc.totalPrice;
             System.out.println(totalPrice);
-            afficheTotal.setText("$"+totalPrice);
-            
-            
+            afficheTotal.setText("$" + totalPrice);
+
         } catch (SQLException ex) {
             Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+    }
 
     @FXML
     private void RemoveProduct(ActionEvent event) throws IOException {
-         if (table.getSelectionModel().getSelectedItem() != null) {
-			Cart selectedCart = table.getSelectionModel().getSelectedItem();
-                        ServiceCart sc = new ServiceCart();
-                        
-			if (sc.DeleteFromCart(selectedCart, username)) {
-				Alert alert = new Alert(Alert.AlertType.NONE, selectedCart.getTitle() +" Removed Successfully!", ButtonType.OK);
-				alert.showAndWait();
-				FXMLLoader shoppingCartPage = new FXMLLoader(getClass().getResource("ShoppingCart.fxml"));
-				Parent shoppingCartParent = (Parent) shoppingCartPage.load();
-				Scene shoppingCartScene = new Scene(shoppingCartParent);
-				Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-				CartController newUserName = shoppingCartPage.getController();
-				newUserName.sendData(username);
-				window.setScene(shoppingCartScene);
-				window.show();
-			} else {
-				Alert alert = new Alert(Alert.AlertType.NONE, "Product removing Failed!", ButtonType.OK);
-				alert.showAndWait();
-				return;
-			}
-		}
-		else {
-			Alert alert = new Alert(Alert.AlertType.NONE, "Please Select Product To Remove!", ButtonType.OK);
-			alert.showAndWait();
-			return;
-		}
-    }
-    
+        if (table.getSelectionModel().getSelectedItem() != null) {
+            Cart selectedCart = table.getSelectionModel().getSelectedItem();
+            ServiceCart sc = new ServiceCart();
 
+            if (sc.DeleteFromCart(selectedCart, username)) {
+                Alert alert = new Alert(Alert.AlertType.NONE, selectedCart.getTitle() + " Removed Successfully!", ButtonType.OK);
+                alert.showAndWait();
+                FXMLLoader shoppingCartPage = new FXMLLoader(getClass().getResource("ShoppingCart.fxml"));
+                Parent shoppingCartParent = (Parent) shoppingCartPage.load();
+                Scene shoppingCartScene = new Scene(shoppingCartParent);
+                Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+                CartController newUserName = shoppingCartPage.getController();
+                newUserName.sendData(username);
+                window.setScene(shoppingCartScene);
+                window.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.NONE, "Product removing Failed!", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.NONE, "Please Select Product To Remove!", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+    }
 
     @FXML
     private void UpdateQte(ActionEvent event) throws IOException {
         if (table.getSelectionModel().getSelectedItem() != null) {
-			Cart selectedCart = table.getSelectionModel().getSelectedItem();
-                        int New_Qte = Integer.parseInt(QuantityUpdateField.getText());
-                        ServiceCart sc =  new ServiceCart();
-                        
+            Cart selectedCart = table.getSelectionModel().getSelectedItem();
+            int New_Qte = Integer.parseInt(QuantityUpdateField.getText());
+            ServiceCart sc = new ServiceCart();
 
-			if (sc.Update_Quantity(selectedCart, username,New_Qte)) {
-				Alert alert = new Alert(Alert.AlertType.NONE, selectedCart.getTitle() +" Updated Successfully!", ButtonType.OK);
-				alert.showAndWait();
-                                
-				FXMLLoader shoppingCartPage = new FXMLLoader(getClass().getResource("ShoppingCart.fxml"));
-				Parent shoppingCartParent = (Parent) shoppingCartPage.load();
-				Scene shoppingCartScene = new Scene(shoppingCartParent);
-				Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-                                
-				CartController newUserName = shoppingCartPage.getController();
-				newUserName.sendData(username);
-                                
-				window.setScene(shoppingCartScene);
-				window.show();
-			} else {
-				Alert alert = new Alert(Alert.AlertType.NONE, "Product Updating Failed!", ButtonType.OK);
-				alert.showAndWait();
-				return;
-			}
-		}
-		else {
-			Alert alert = new Alert(Alert.AlertType.NONE, "Please Select Product To Update!", ButtonType.OK);
-			alert.showAndWait();
-			return;
-		}
+            if (sc.Update_Quantity(selectedCart, username, New_Qte)) {
+                Alert alert = new Alert(Alert.AlertType.NONE, selectedCart.getTitle() + " Updated Successfully!", ButtonType.OK);
+                alert.showAndWait();
+
+                FXMLLoader shoppingCartPage = new FXMLLoader(getClass().getResource("ShoppingCart.fxml"));
+                Parent shoppingCartParent = (Parent) shoppingCartPage.load();
+                Scene shoppingCartScene = new Scene(shoppingCartParent);
+                Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+
+                CartController newUserName = shoppingCartPage.getController();
+                newUserName.sendData(username);
+
+                window.setScene(shoppingCartScene);
+                window.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.NONE, "Product Updating Failed!", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.NONE, "Please Select Product To Update!", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
     }
-    
+
 //    private boolean Update_Quantity(Cart c){
 //		Connection connection = null;
 //                try {
@@ -317,37 +303,31 @@ public class CartController implements Initializable {
 //		return true;
 //                
 //    }
-
     @FXML
     private void Checkout(ActionEvent event) throws IOException {
-        
-        if(totalPrice != 0){
+
+        if (totalPrice != 0) {
             ServiceCommande sc = new ServiceCommande();
-        sc.addCommande(username);
-        System.out.println("add commande executed");
-        Alert alert = new Alert(Alert.AlertType.NONE, "Proceed to Payment", ButtonType.OK);
-				alert.showAndWait();
-        FXMLLoader Paiement = new FXMLLoader(getClass().getResource("/Views/Paiement.fxml"));
-        Parent PaiementParent = (Parent) Paiement.load();
-        Scene PaiementScene = new Scene(PaiementParent);
-        Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-        
-        PaiementController paiement = Paiement.getController();
-        paiement.sendTotal(totalPrice);
+            sc.addCommande(username);
+            System.out.println("add commande executed");
+            Alert alert = new Alert(Alert.AlertType.NONE, "Proceed to Payment", ButtonType.OK);
+            alert.showAndWait();
+            FXMLLoader Paiement = new FXMLLoader(getClass().getResource("/Views/Paiement.fxml"));
+            Parent PaiementParent = (Parent) Paiement.load();
+            Scene PaiementScene = new Scene(PaiementParent);
+            Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
 
-        window.setScene(PaiementScene);
-        window.show();
+            PaiementController paiement = Paiement.getController();
+            paiement.sendTotal(totalPrice, username);
 
-        }else {
+            window.setScene(PaiementScene);
+            window.show();
+
+        } else {
             Alert alert = new Alert(Alert.AlertType.NONE, "Your Cart is Empty !!", ButtonType.OK);
-				alert.showAndWait();
+            alert.showAndWait();
         }
-        
-        
+
     }
-    
-    
-    
-    
-    
+
 }

@@ -60,15 +60,14 @@ public class IndexController implements Initializable {
     private Button deleteBtn;
     @FXML
     private Button editBtn;
-    
-    private Stage primarystage; 
-    
-   
+
+    private Stage primarystage;
+
     String query = null;
-    Connection connection = null ;
-    PreparedStatement preparedStatement = null ;
-    ResultSet resultSet = null ;
-    User u = null ;
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+    User u = null;
     ObservableList<User> CartList = FXCollections.observableArrayList();
     @FXML
     private TextField tfemail;
@@ -86,15 +85,16 @@ public class IndexController implements Initializable {
     private TextField tfrecherche;
     @FXML
     private ComboBox<String> typeRecherche;
-     ObservableList<String> listeTypeRecherche = FXCollections.observableArrayList("Tout", "firstname", "lastname");
+    ObservableList<String> listeTypeRecherche = FXCollections.observableArrayList("Tout", "firstname", "lastname");
     @FXML
     private Button btnimpression;
     @FXML
     private ComboBox<String> typetri;
-    ObservableList<String> listeTypetri = FXCollections.observableArrayList("Tout", "Trie firstname", "Trie lastname","Trie Email");
+    ObservableList<String> listeTypetri = FXCollections.observableArrayList("Tout", "Trie firstname", "Trie lastname", "Trie Email");
     ObservableList<User> reslist = FXCollections.observableArrayList();
     @FXML
     private Button btnactualiser;
+
     /**
      * Initializes the controller class.
      */
@@ -105,10 +105,10 @@ public class IndexController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, ex);
         }
-                        typeRecherche.setItems(listeTypeRecherche);
-                        typeRecherche.setValue("Tout");
-                        typetri.setItems(listeTypetri);
-                        typetri.setValue("Tout");
+        typeRecherche.setItems(listeTypeRecherche);
+        typeRecherche.setValue("Tout");
+        typetri.setItems(listeTypetri);
+        typetri.setValue("Tout");
         try {
             listtri();
 //        try {
@@ -119,10 +119,10 @@ public class IndexController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }    
-    
-    private void  UserData () throws SQLException  {
+
+    }
+
+    private void UserData() throws SQLException {
         ObservableList<User> listUser = FXCollections.observableArrayList();
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
@@ -136,46 +136,43 @@ public class IndexController implements Initializable {
     }
 
     @FXML
-     private void ButtonAction(javafx.event.ActionEvent event) throws SQLException, IOException {
-        if(event.getSource() == addBtn){
-        Stage window = primarystage;
-        Parent rootRec2 = FXMLLoader.load(getClass().getResource("/Views/addUser.fxml"));
-        Scene rec2 = new Scene(rootRec2);
-        Stage app = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        app.setScene(rec2);
-        app.show();
-        
+    private void ButtonAction(javafx.event.ActionEvent event) throws SQLException, IOException {
+        if (event.getSource() == addBtn) {
+            Stage window = primarystage;
+            Parent rootRec2 = FXMLLoader.load(getClass().getResource("/Views/addUser.fxml"));
+            Scene rec2 = new Scene(rootRec2);
+            Stage app = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            app.setScene(rec2);
+            app.show();
+
         } else if (event.getSource() == deleteBtn) {
             deleteUser();
-        }
-         else if (event.getSource() == editBtn) {
+        } else if (event.getSource() == editBtn) {
             User selected = (User) tableUser.getSelectionModel().getSelectedItem();
-            
+
             tfemail.setVisible(true);
             tfpassword.setVisible(true);
             tffirstname.setVisible(true);
             tflastname.setVisible(true);
             tfNbrTel.setVisible(true);
             updateBtn.setVisible(true);
-            
-            
+
             System.out.println(selected.NbrParse());
-            
+
             tfemail.setText(selected.getEmail());
             tfpassword.setText(selected.getPassword());
             tffirstname.setText(selected.getUsername());
             tflastname.setText(selected.getLastname());
             tfNbrTel.setText(selected.NbrParse());
-            }
-         else if (event.getSource() == updateBtn) {
+        } else if (event.getSource() == updateBtn) {
             User selected = (User) tableUser.getSelectionModel().getSelectedItem();
             ServiceUser u = new ServiceUser();
-            
+
             User user;
-            user = new User(selected.getId(),tfemail.getText(), tfpassword.getText(), tffirstname.getText(), tflastname.getText(),Integer.parseInt(tfNbrTel.getText()));
-            
+            user = new User(selected.getId(), tfemail.getText(), tfpassword.getText(), tffirstname.getText(), tflastname.getText(), Integer.parseInt(tfNbrTel.getText()));
+
             u.updateUser(user);
-            UserData ();
+            UserData();
             tfemail.setVisible(false);
             tfpassword.setVisible(false);
             tffirstname.setVisible(false);
@@ -183,69 +180,71 @@ public class IndexController implements Initializable {
             tfNbrTel.setVisible(false);
             updateBtn.setVisible(false);
             tableUser.refresh();
-            
-        }
-        else if(event.getSource() == btnimpression){
+
+        } else if (event.getSource() == btnimpression) {
             BPDF();
-        }
-        else if(event.getSource() == btnactualiser){
+        } else if (event.getSource() == btnactualiser) {
             actualiser();
         }
-        
+
     }
-     
-   private void deleteUser() throws SQLException{
+
+    private void deleteUser() throws SQLException {
         User selected = (User) tableUser.getSelectionModel().getSelectedItem();
         ServiceUser user = new ServiceUser();
         user.deleteUser(selected.getId());
-        JOptionPane.showMessageDialog(null,"utilisateur supprimeé");
+        JOptionPane.showMessageDialog(null, "utilisateur supprimeé");
         UserData();
         tableUser.refresh();
-        
-        
+
     }
-   
-   public String toString(int k){
-        return "" ;
+
+    public String toString(int k) {
+        return "";
     }
-   @FXML
-   private void list() throws SQLException {
-        
-            ServiceUser rt = new ServiceUser();
-            //UserData();
-            List arr = rt.chercherUser(typeRecherche.getValue(),tfrecherche.getText());
-            ObservableList obb = FXCollections.observableArrayList(arr);
-            tableUser.setItems(obb);
-        
-    }
-       private void BPDF() {
-    System.out.println("To Printer!");
-         PrinterJob job = PrinterJob.createPrinterJob();
-           if(job != null){
-    Window primaryStage = null;
-           job.showPrintDialog(primaryStage); 
-    Node root = this.tableUser;
-           job.printPage(root);
-           job.endJob();
-    }
-    }
-          @FXML
-     private void listtri() throws SQLException {
-        
+
+    @FXML
+    private void list() throws SQLException {
+
         ServiceUser rt = new ServiceUser();
-            //loadDate();
-            List arr = rt.trier(typetri.getValue());
-            ObservableList obb = FXCollections.observableArrayList(arr);
-            tableUser.setItems(obb);
-       
+        //UserData();
+        List arr = rt.chercherUser(typeRecherche.getValue(), tfrecherche.getText());
+        ObservableList obb = FXCollections.observableArrayList(arr);
+        tableUser.setItems(obb);
+
     }
-       public void actualiser() throws SQLException{
-         reslist.clear();
-       UserData();
-       tableUser.refresh(); 
-        
+
+    private void BPDF() {
+        System.out.println("To Printer!");
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null) {
+            Window primaryStage = null;
+            job.showPrintDialog(primaryStage);
+            Node root = this.tableUser;
+            job.printPage(root);
+            job.endJob();
+        }
     }
-          @FXML
+
+    @FXML
+    private void listtri() throws SQLException {
+
+        ServiceUser rt = new ServiceUser();
+        //loadDate();
+        List arr = rt.trier(typetri.getValue());
+        ObservableList obb = FXCollections.observableArrayList(arr);
+        tableUser.setItems(obb);
+
+    }
+
+    public void actualiser() throws SQLException {
+        reslist.clear();
+        UserData();
+        tableUser.refresh();
+
+    }
+
+    @FXML
     private void back(javafx.event.ActionEvent event) throws IOException {
         Stage window = primarystage;
         Parent rootRec2 = FXMLLoader.load(getClass().getResource("/Views/adminDashboard.fxml"));;
@@ -254,5 +253,5 @@ public class IndexController implements Initializable {
         app.setScene(rec2);
         app.show();
     }
- 
+
 }

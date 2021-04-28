@@ -40,7 +40,7 @@ import Services.ServiceProduct;
  * @author khamm
  */
 public class ProductsController implements Initializable {
-    
+
     private Label label;
     @FXML
     private TableColumn<Product, String> colTitle;
@@ -50,75 +50,71 @@ public class ProductsController implements Initializable {
     private TableColumn<Product, String> colQuantity;
     @FXML
     private TableView<Product> table;
-    
+
     String query = null;
-    Connection connection = null ;
-    PreparedStatement preparedStatement = null ;
-    ResultSet resultSet = null ;
-    Product student = null ;
-    
-    ObservableList<Product>  ProductList = FXCollections.observableArrayList();
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+    Product student = null;
+
+    ObservableList<Product> ProductList = FXCollections.observableArrayList();
     @FXML
     private TextField QuantityField;
-    
-    private String username;
 
+    private String username;
 
     public ProductsController() {
     }
 
-
-    
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World!");
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       loadData();
+        loadData();
 //           if(username != null){
 //        loadData();
 //    }
-        
+
         table.setOnMousePressed(new EventHandler<MouseEvent>() {
-                    
-			@Override
-			public void handle(MouseEvent event) {
-				// TODO Auto-generated method stub
-				Product selectedProduct = table.getSelectionModel().getSelectedItem();
-			}
-		});
-        
-    }    
+
+            @Override
+            public void handle(MouseEvent event) {
+                // TODO Auto-generated method stub
+                Product selectedProduct = table.getSelectionModel().getSelectedItem();
+            }
+        });
+
+    }
 
     @FXML
     private void addToCart(ActionEvent event) {
-        
+
         if (table.getSelectionModel().getSelectedItem() != null) {
-            
+
             ServiceCart sc = new ServiceCart();
-            
+
             int qte = Integer.parseInt(QuantityField.getText());
-			Product selectedProduct = table.getSelectionModel().getSelectedItem();
-			if (sc.saveToCart(selectedProduct, username,qte ) && qte !=0 ) {
-				Alert alert = new Alert(Alert.AlertType.NONE, selectedProduct.getTitle() +" Added Successfully!", ButtonType.OK);
-				alert.showAndWait();
-                                System.out.println(qte);
-				return;
-			} else {
-				Alert alert = new Alert(Alert.AlertType.NONE, "Product Adding Failed!", ButtonType.OK);
-				alert.showAndWait();
-				return;
-			}
-		}
-		else {
-			Alert alert = new Alert(Alert.AlertType.NONE, "Please Select Product To Add!", ButtonType.OK);
-			alert.showAndWait();
-			return;
-		}
+            Product selectedProduct = table.getSelectionModel().getSelectedItem();
+            if (sc.saveToCart(selectedProduct, username, qte) && qte != 0) {
+                Alert alert = new Alert(Alert.AlertType.NONE, selectedProduct.getTitle() + " Added Successfully!", ButtonType.OK);
+                alert.showAndWait();
+                System.out.println(qte);
+                return;
+            } else {
+                Alert alert = new Alert(Alert.AlertType.NONE, "Product Adding Failed!", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.NONE, "Please Select Product To Add!", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
     }
-    
+
 //    private boolean saveToCart(Product p) {
 //		Connection connection = null;
 //		try {
@@ -150,42 +146,38 @@ public class ProductsController implements Initializable {
 //		}
 //		return true;
 //	}
-    
-
     @FXML
-    private void viewCart(ActionEvent event) throws IOException{
-        
+    private void viewCart(ActionEvent event) throws IOException {
+
         FXMLLoader shoppingCartPage = new FXMLLoader(getClass().getResource("/Views/Cart.fxml"));
-	Parent shoppingCartParent = (Parent) shoppingCartPage.load();
-	Scene shoppingCartScene = new Scene(shoppingCartParent);
-	Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
-        
+        Parent shoppingCartParent = (Parent) shoppingCartPage.load();
+        Scene shoppingCartScene = new Scene(shoppingCartParent);
+        Stage window = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+
         CartController newUserName = shoppingCartPage.getController();
-	newUserName.sendData(username);
-        
+        newUserName.sendData(username);
+
         window.setScene(shoppingCartScene);
         window.show();
     }
-    
-    
-    private void loadData(){
+
+    private void loadData() {
         try {
             connection = DbConnect.getConnect();
-            
+
             colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
             colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
             colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-            
+
             ServiceProduct sp = new ServiceProduct();
             table.setItems(sp.AfficheProduct());
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ProductsController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
     }
-    
+
 //    public void loadDatabase() {
 //
 //		Connection connection = null;
@@ -218,12 +210,10 @@ public class ProductsController implements Initializable {
 //			}
 //		}
 //	}
-    
-    
-    	public void sendData(String text) {
-		this.username = text;
-		System.out.println("home maminizer  "+username); // verify username passed
-		//loadDatabase();
-	}
-    
+    public void sendData(String text) {
+        this.username = text;
+        System.out.println("home maminizer  " + username); // verify username passed
+        //loadDatabase();
+    }
+
 }

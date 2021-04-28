@@ -13,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-
 /**
  * FXML Controller class
  *
@@ -24,7 +23,7 @@ public class UserDashboardController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    private Stage primarystage; 
+    private Stage primarystage;
     @FXML
     private Button logout;
     public String username;
@@ -35,7 +34,8 @@ public class UserDashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
     @FXML
     private void back(ActionEvent event) throws IOException {
         Stage window = primarystage;
@@ -48,22 +48,22 @@ public class UserDashboardController implements Initializable {
 
     @FXML
     private void checkProduct(ActionEvent event) throws IOException {
-  
-                       FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/products.fxml"));
-                       root =  loader.load();
-                       
-                       ProductsController fxmldocumentController = loader.getController();
-                       fxmldocumentController.sendData(username);
-                       
-                       stage = (Stage) ((Node)(event.getSource())).getScene().getWindow();
-                       scene = new Scene(root);
-                       stage.setScene(scene);
-                       stage.show();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/products.fxml"));
+        root = loader.load();
+
+        ProductsController fxmldocumentController = loader.getController();
+        fxmldocumentController.sendData(username);
+
+        stage = (Stage) ((Node) (event.getSource())).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-    
-     public void sendData(String text) {
-		this.username = text;
-		System.out.println("userdashboard   "+username); // verify username passed
-		
-	}
+
+    public void sendData(String text) {
+        this.username = text;
+        System.out.println("userdashboard   " + username); // verify username passed
+
+    }
 }
