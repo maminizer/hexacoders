@@ -74,10 +74,10 @@ public class LoginController implements Initializable {
 
         if (connection == null) {
             lblErrors.setTextFill(Color.TOMATO);
-            lblErrors.setText("Server Error : Check");
+            lblErrors.setText("Serveur en Panne");
         } else {
             lblErrors.setTextFill(Color.GREEN);
-            lblErrors.setText("Server is up : Good to go");
+            lblErrors.setText("Serveur Marche ");
         }
     }
 
@@ -137,7 +137,7 @@ public class LoginController implements Initializable {
         String email = txtUsername.getText();
         String password = txtPassword.getText();
         if (email.isEmpty() || password.isEmpty()) {
-            setLblError(Color.TOMATO, "Empty credentials");
+            setLblError(Color.TOMATO, "Données Vides");
             status = "Error";
         } else {
             //query
@@ -151,13 +151,13 @@ public class LoginController implements Initializable {
                 if (!resultSet.next()) {
 
                     System.out.println("No result in query");
-                    setLblError(Color.TOMATO, "Enter Correct Email/Password");
+                    setLblError(Color.TOMATO, "Email ou Mot de Passe Incorrect");
                     status = "Error";
                 } else {
                     System.out.println("result in query");
                     boolean valid = verifyHash(password, email);
                     if (valid == false) {
-                        setLblError(Color.TOMATO, "Enter Correct Email/Password");
+                        setLblError(Color.TOMATO, "Email ou Mot de Passe Incorrect");
                         status = "Error";
                     } else {
                         setLblError(Color.GREEN, "Login Successful..Redirecting..");
@@ -179,7 +179,7 @@ public class LoginController implements Initializable {
 
         String password = txtPassword.getText();
         if (email.isEmpty() || password.isEmpty()) {
-            setLblError(Color.TOMATO, "Empty credentials");
+            setLblError(Color.TOMATO, "Données Vides");
             status = "Error";
         } else {
             //query
@@ -192,13 +192,13 @@ public class LoginController implements Initializable {
 
                 if (!resultSet.next()) {
                     System.out.println("No result in query");
-                    setLblError(Color.TOMATO, "Enter Correct Email/Password");
+                    setLblError(Color.TOMATO, "Email ou Mot de Passe Incorrect");
                     status = "Error";
                 } else {
                     System.out.println("result in query");
                     boolean valid = verifyHash(password, email);
                     if (valid == false) {
-                        setLblError(Color.TOMATO, "Enter Correct Email/Password");
+                        setLblError(Color.TOMATO, "Email ou Mot de Passe Incorrect");
                         status = "Error";
                     } else {
                         setLblError(Color.GREEN, "Login Successful..Redirecting..");
