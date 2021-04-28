@@ -16,5 +16,9 @@ import javafx.collections.ObservableList;
  */
 public interface IServiceProduct {
     public void addProduct(Product p);
-    public ObservableList<Product> AfficheProduct() throws SQLException;    
+    public ObservableList<Product> AfficheProduct() throws SQLException;
+     public void AddProduct(Product p, int lengh);
+    public boolean DeleteProduct(int id);
+     public boolean UpdateProduct(Product p,int id);
+    public ObservableList<Product>  AfficherProduct() throws SQLException;    
 }

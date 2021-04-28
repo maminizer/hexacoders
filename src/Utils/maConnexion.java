@@ -14,10 +14,14 @@ import java.sql.SQLException;
  * @author khamm
  */
 public class Maconnexion {
-    final static String URL = "jdbc:mysql://127.0.0.1:3306/tunipharma3";
+    final static String URL = "jdbc:mysql://127.0.0.1:3306/tunipharma4";
     final static String LOGIN = "root";
     final static String PWD = "";
     static Maconnexion instance = null;
+
+    public static Object getinstance() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private Connection cnx;
     
     private Maconnexion(){

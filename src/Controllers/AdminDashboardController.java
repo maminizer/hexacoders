@@ -31,6 +31,8 @@ public class AdminDashboardController implements Initializable {
     private Scene scene;
     private Stage stage;
     private Stage primarystage; 
+    @FXML
+    private Button catalogueBttn;
 
     /**
      * Initializes the controller class.
@@ -54,7 +56,18 @@ public class AdminDashboardController implements Initializable {
                 System.err.println(ex.getMessage());
             }
   
-        } 
+        } else if(event.getSource()==catalogueBttn){
+          try {
+                //add you loading or delays - ;-)
+                    root = FXMLLoader.load(getClass().getResource("/Views/AdminHome.fxml"));
+                    stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+            } catch (IOException ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
     }
           @FXML
     private void back(javafx.event.ActionEvent event) throws IOException {
@@ -66,4 +79,12 @@ public class AdminDashboardController implements Initializable {
         app.show();
     }
     
+             @FXML
+    private void ProdGst(ActionEvent event) throws IOException {
+        		Parent root = FXMLLoader.load(getClass().getResource("/views/product.fxml"));
+		Scene scene = new Scene(root);
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setScene(scene);
+		stage.show();
+    }
 }
