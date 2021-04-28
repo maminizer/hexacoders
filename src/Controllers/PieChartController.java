@@ -5,8 +5,11 @@
  */
 package Controllers;
 
-import Entities.product;
-import Service.ServiceProduct;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+import Entities.Product;
+import Services.ServiceProduct;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -35,43 +38,41 @@ public class PieChartController implements Initializable {
 
     @FXML
     private PieChart PieChart;
-    
-      ObservableList<PieChart.Data> list=FXCollections.observableArrayList();
+
+    ObservableList<PieChart.Data> list = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         ServiceProduct pdao;
-         
-		try {
-			pdao = ServiceProduct.getInstance();
+        ServiceProduct pdao;
 
-        List<product> pers=pdao.AfficherProduct();
-        for(product p:pers) {
-            list.addAll(
-           
-                new PieChart.Data(String.valueOf(p.getQuantity()), 12.0)             
-        );
-        }
-        PieChart.setAnimated(true);
-        PieChart.setData(list);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException ex) {
+        try {
+            pdao = ServiceProduct.getInstance();
+
+            List<Product> pers = (List<Product>) pdao.AfficherProduct();
+            for (Product p : pers) {
+                list.addAll(
+                        new PieChart.Data(p.getTitle(), p.getQuantity())
+                );
+            }
+            PieChart.setAnimated(true);
+            PieChart.setData(list);
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException ex) {
             Logger.getLogger(PieChartController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
 
     @FXML
     private void Backproduits(ActionEvent event) throws IOException {
-        	Parent root = FXMLLoader.load(getClass().getResource("/views/Product.fxml"));
-		Scene scene = new Scene(root);
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("/views/Product.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
-    
 }

@@ -5,9 +5,12 @@
  */
 package Controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 import Entities.commentaire;
-import Entities.product;
-import Service.ServiceCommentaire;
+import Entities.Product;
+import Services.ServiceCommentaire;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,7 +19,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
@@ -40,6 +46,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
 
 /**
  * FXML Controller class
@@ -63,9 +71,8 @@ public class CommentaireController implements Initializable {
     @FXML
     private Button BtnDell;
 
-    
     commentaire com = null;
-    private product selectedProduct;
+    private Product selectedProduct;
 
     @FXML
     private TextField TfContenu;
@@ -87,48 +94,53 @@ public class CommentaireController implements Initializable {
     @FXML
     private ImageView imageview;
 
+    private AutoCompletionBinding<String> autoCompletionBinding;
+    private String[] _possibleSuggestions = {"Hey", "Hello", "Cool"};
+    private Set<String> possibleSuggestions = new HashSet<>(Arrays.asList(_possibleSuggestions));
+    @FXML
+    private Label TfId;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                  try {
-            
+        TextFields.bindAutoCompletion(TfContenu, "Hey", "Hello", "Cool");
+        autoCompletionBinding = TextFields.bindAutoCompletion(TfContenu, possibleSuggestions);
+        try {
+
             AfficherCommentaire();
         } catch (SQLException ex) {
             Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
-      
-    }
-            TableCommentaire.setOnMouseClicked(new EventHandler<MouseEvent>() 
-          {
+
+        }
+        TableCommentaire.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                com = (commentaire)TableCommentaire.getSelectionModel().getSelectedItem();
+                com = (commentaire) TableCommentaire.getSelectionModel().getSelectedItem();
                 System.out.println(com);
 
-               
-      
-                TfContenu.setText(com.getContenu());  
-            } } );
+                TfContenu.setText(com.getContenu());
+            }
+        });
 
     }
 
-   private void AfficherCommentaire() throws SQLException {
+    private void AfficherCommentaire() throws SQLException {
         ServiceCommentaire sc = new ServiceCommentaire();
         ObservableList<commentaire> list = sc.AfficherCommentaire();
-        
+
         colIdProduit.setCellValueFactory(new PropertyValueFactory<commentaire, Integer>("produit_id"));
         colContenu.setCellValueFactory(new PropertyValueFactory<commentaire, String>("contenu"));
         TableCommentaire.setItems(list);
-   
-   
-   }    
+
+    }
 
     @FXML
     private void AjouterCommentaire(ActionEvent event) {
-          ServiceCommentaire sc = new ServiceCommentaire();
-          commentaire c = new commentaire();
-        int pid = Integer.parseInt(labId.getText());
-         c.setProduit_id(pid);
+        ServiceCommentaire sc = new ServiceCommentaire();
+        commentaire c = new commentaire();
+        int pid = Integer.parseInt(TfId.getText());
+        c.setProduit_id(pid);
         c.setContenu(TfContenu.getText());
-        sc. AddCommentaire(c);
+        sc.AddCommentaire(c);
         try { //afficher au fur et a mesure avec l'ajout
             AfficherCommentaire();
         } catch (SQLException ex) {
@@ -138,98 +150,100 @@ public class CommentaireController implements Initializable {
 
     @FXML
     private void ModifierCommentaire(ActionEvent event) {
-              ServiceCommentaire sc = new ServiceCommentaire();
-                        System.out.println(com);
-         if(com== null){
+        ServiceCommentaire sc = new ServiceCommentaire();
+        System.out.println(com);
+        if (com == null) {
             JOptionPane.showMessageDialog(null, "choisir commentaire");
-                   
-        }else{
-             
-             String contenu = TfContenu.getText();
-             sc.UpdateCommentaire(new commentaire(contenu),com.getId());
-           
-             JOptionPane.showMessageDialog(null, "commentaire modifier");
-       
+
+        } else {
+
+            String contenu = TfContenu.getText();
+            sc.UpdateCommentaire(new commentaire(contenu), com.getId());
+
+            JOptionPane.showMessageDialog(null, "commentaire modifier");
+
             TfContenu.clear();
-            
-             com=null;
-               try {
-                 AfficherCommentaire() ;
-             } catch (SQLException ex) {
-                 Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         }
+
+            com = null;
+            try {
+                AfficherCommentaire();
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     @FXML
     private void SupprimerCommentaire(ActionEvent event) {
         ServiceCommentaire sc = new ServiceCommentaire();
-        commentaire p = (commentaire)TableCommentaire.getSelectionModel().getSelectedItem();
+        commentaire p = (commentaire) TableCommentaire.getSelectionModel().getSelectedItem();
         System.out.println(p);
-        if(com== null){
+        if (com == null) {
             JOptionPane.showMessageDialog(null, "choisir Commentaire");
-                   
-        }else{
+
+        } else {
             sc.DeleteCommentaire(com.getId());
-    
-           try { //afficher au fur et a mesure avec l'ajout
-            AfficherCommentaire();
-        } catch (SQLException ex) {
-            Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           
-           JOptionPane.showMessageDialog(null, "Commentaire supprimer");
-          
+
+            try { //afficher au fur et a mesure avec l'ajout
+                AfficherCommentaire();
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            JOptionPane.showMessageDialog(null, "Commentaire supprimer");
+
             TfContenu.clear();
-            
-            com=null;
+
+            com = null;
+        }
     }
-    }
-    public void initData(product product) throws FileNotFoundException, IOException{
-         selectedProduct = product;
-         
-        int pid=selectedProduct.getId();
-        String Spid=String.valueOf(pid);
-        
-                
-        labTitle.setText(selectedProduct.getTitle());
-       // labImage.setText(selectedProduct.getImage());
-        
-         int pprice=selectedProduct.getPrice();
-         String Spprice=String.valueOf(pprice);
-         labPrice.setText(Spprice);
-            
-         int penvente=selectedProduct.getEn_vente();
-         String Spenvente=String.valueOf(penvente);
-         labEnvente.setText(Spenvente);
-         
-         int pquantity=selectedProduct.getQuantity();
-         String Spquantity=String.valueOf(pquantity);
-         labQuantity.setText(Spquantity);
-         
-        labDescription.setText(selectedProduct.getDescription());
-        
+
+    public void initData(Product product) throws FileNotFoundException, IOException {
+
+        selectedProduct = product;
+
+        int pid = selectedProduct.getId();
+        String Spid = String.valueOf(pid);
+        TfId.setText(Spid);
+
         InputStream is = selectedProduct.getImageJ();
         OutputStream os = new FileOutputStream(new File("photo.jpg"));
-        	byte[] content = new byte[1024];
-		int size = 0;
-		while ((size = is.read(content)) != -1) {
-			os.write(content, 0, size);
-		}
-		os.close();
-		is.close();
-		Image image = new Image("file:photo.jpg", imageview.getFitWidth(), imageview.getFitHeight(), true, true);
-		imageview.setImage(image);
-        
+        byte[] content = new byte[1024];
+        int size = 0;
+        while ((size = is.read(content)) != -1) {
+            os.write(content, 0, size);
+        }
+        os.close();
+        is.close();
+        Image image = new Image("file:photo.jpg", imageview.getFitWidth(), imageview.getFitHeight(), true, true);
+        imageview.setImage(image);
+
+        labTitle.setText(selectedProduct.getTitle());
+        // labImage.setText(selectedProduct.getImage());
+
+        int pprice = (int) selectedProduct.getPrice();
+        String Spprice = String.valueOf(pprice);
+        labPrice.setText(Spprice);
+
+        int penvente = selectedProduct.getEn_vente();
+        String Spenvente = String.valueOf(penvente);
+        labEnvente.setText(Spenvente);
+
+        int pquantity = selectedProduct.getQuantity();
+        String Spquantity = String.valueOf(pquantity);
+        labQuantity.setText(Spquantity);
+
+        labDescription.setText(selectedProduct.getDescription());
+
     }
 
     @FXML
     private void Back(ActionEvent event) throws IOException {
-        	Parent root = FXMLLoader.load(getClass().getResource("/views/Product.fxml"));
-		Scene scene = new Scene(root);
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("/views/Product.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

@@ -10,7 +10,7 @@ package Entities;
  * @author yossr
  */
 public class commentaire {
-    private int id;
+       private int id;
     private int produit_id;
 
     public commentaire(String contenu) {
