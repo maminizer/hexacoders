@@ -14,49 +14,51 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-
 /**
  *
  * @author WIKI
  */
 public class CatalogueService {
+
     Connection cnx;
     PreparedStatement st;
-    public CatalogueService(){
-      cnx = Maconnexion.getInstance().getConnection();
-            }
-    public void ajouterCatalogues(String query){
-    Statement ste;
-  
+
+    public CatalogueService() {
+        cnx = Maconnexion.getInstance().getConnection();
+    }
+
+    public void ajouterCatalogues(String query) {
+        Statement ste;
+
         try {
-            ste=cnx.createStatement();
-           
+            ste = cnx.createStatement();
+
             ste.executeUpdate(query);
             System.out.println("catalogue ajouter");
         } catch (SQLException ex) {
             Logger.getLogger(CatalogueService.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
         }
-    } 
-    
-    public ObservableList<Catalogue> afficherCatalogue(){
-    ObservableList<Catalogue> catalogues=FXCollections.observableArrayList();
-    String sql="select * from catalogue";
+    }
+
+    public ObservableList<Catalogue> afficherCatalogue() {
+        ObservableList<Catalogue> catalogues = FXCollections.observableArrayList();
+        String sql = "select * from catalogue";
         try {
-            st=cnx.prepareStatement(sql);
-            ResultSet rs=st.executeQuery();
-while(rs.next()){
-    Catalogue catalogue=new Catalogue();
-    catalogue.setId(rs.getInt("id"));
-    catalogue.setNom(rs.getString("nom"));
-    catalogue.setDescription(rs.getString("description"));
-    catalogues.add(catalogue);
-}            
+            st = cnx.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Catalogue catalogue = new Catalogue();
+                catalogue.setId(rs.getInt("id"));
+                catalogue.setNom(rs.getString("nom"));
+                catalogue.setDescription(rs.getString("description"));
+                catalogues.add(catalogue);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(CatalogueService.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("affiche failed");
         }
         return catalogues;
     }
-    
+
 }

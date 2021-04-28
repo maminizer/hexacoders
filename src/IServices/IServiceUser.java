@@ -14,5 +14,6 @@ import javafx.collections.ObservableList;
  * @author khamm
  */
 public interface IServiceUser {
+
     public ObservableList<User> AfficheUser(String username) throws SQLException;
 }

@@ -101,7 +101,7 @@ public class ServiceProduct implements IServiceProduct {
             prep = cnx.prepareStatement(query);
 
             prep.setString(1, p.getTitle());
-           // prep.setBinaryStream(2, p.getImageJ(), lengh);
+            // prep.setBinaryStream(2, p.getImageJ(), lengh);
             prep.setInt(2, (int) p.getPrice());
             prep.setInt(3, p.getQuantity());
             prep.setInt(4, p.getEn_vente());

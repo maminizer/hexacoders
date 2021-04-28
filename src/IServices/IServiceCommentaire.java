@@ -14,8 +14,12 @@ import javafx.collections.ObservableList;
  * @author yossr
  */
 public interface IServiceCommentaire {
+
     public void AddCommentaire(commentaire c);
+
     public boolean DeleteCommentaire(int id);
-    public boolean UpdateCommentaire(commentaire p,int id);
-    public ObservableList<commentaire>  AfficherCommentaire() throws SQLException;
+
+    public boolean UpdateCommentaire(commentaire p, int id);
+
+    public ObservableList<commentaire> AfficherCommentaire() throws SQLException;
 }
