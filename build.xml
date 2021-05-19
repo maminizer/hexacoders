@@ -5,8 +5,8 @@
     To learn more about Codename One go to https://www.codenameone.com/
     -->
         
-    <project name="hexacoders-desktop" default="default" basedir=".">
-    <description>Builds, tests, and runs the project hexacoders-desktop.</description>
+    <project name="tunipharmaApp" default="default" basedir=".">
+    <description>Builds, tests, and runs the project tunipharmaApp.</description>
     <import file="nbproject/build-impl.xml"/>
     <property file="codenameone_settings.properties"/>
     <property name="automated" value="false" />
