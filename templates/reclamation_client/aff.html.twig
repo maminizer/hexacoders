@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+
+
+{%  block body   %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Historique des réclamations
+                </h1>
+                <table id="example" class="table table-striped table-bordered table-primary" style="width:100%">
+
+                    <thead>
+                    <tr class="table-primary">
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Numero de Telephone</th>
+                        <th>Email</th>
+                        <th>Type de  réclamation</th>
+                        <th>Message</th>
+                        <th>Date de création</th>
+                        <th>Etat</th>
+                        <th>priorite</th>
+                        <th>Telecharger Reclamation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr  {% for r in reclamation %} class="table-primary">
+                        <td>{{ r.id }}</td>
+                        <td> {{ r.nom }}</td>
+                        <td> {{ r.numerotelephone }}</td>
+                        <td> {{ r.Email }}</td>
+                        <td> {{ r.typereclamation }} </td>
+                        <td>{{ r.message }}</td>
+                        <td> {{ r.date|date('d/m/Y') }} </td>
+                        <td> {% if r.Etat==1  %}
+                            En Attend ...
+                            {% else %}
+                         <a href="{{ path('Admin',{'id':r.id}) }}"> Voir la réponse </a>
+                            {% endif %}
+                        </td>
+                        <td> {{ r.priorite }}</td>
+                    <td> <a href="{{ path('fichepdf' , { 'id' : r.id}) }}"> Telecharger </a>
+                    </td>
+                    </tr {% endfor %}>
+
+
+                    </tbody>
+
+                </table>
+            </div></div></div>
+    <script>$(document).ready(function() {
+            $('#example').DataTable();
+        } );</script>
+
+
+{% endblock %}

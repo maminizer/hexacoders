@@ -1,0 +1,36 @@
+<h1>Historique des réclamations
+</h1>
+<table border="2" >
+
+    <thead>
+    <tr >
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Numero de Telephone</th>
+        <th>Email</th>
+        <th>Type de  réclamation</th>
+        <th>Message</th>
+        <th>Date de création</th>
+        <th>priorite</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+          
+        <td>{{ r.id }}</td>
+        <td> {{ r.nom }}</td>
+        <td> {{ r.numerotelephone }}</td>
+        <td> {{ r.Email }}</td>
+        <td> {{ r.typereclamation }} </td>
+        <td>{{ r.message }}</td>
+        <td> {{ r.date|date('d/m/Y') }} </td>
+        <td> {{ r.priorite }}</td>
+
+        
+    </tr>
+
+
+    </tbody>
+
+</table>

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart
+{% endblock %}
+
+{% block body %}
+
+    <div class="bg-light p-3">
+        <h1>Votre panier</h1>
+    </div>
+
+    {% if items | length > 0  %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th> Product</th>
+                <th>Price</th>
+                <th> Qantity</th>
+                <th> Total</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.product.title }}</td>
+                    <td>{{ item.product.price }} {{'€'}} </td>
+                    <td >
+                        <a href="{{ path('cart_remove', {'id': item.product.id}) }}" type="button" class="btn btn-danger btn-sm" > - </a>
+
+                        {{ item.quantity }}
+                        <a href="{{ path('cart_increase', {'id': item.product.id}) }}" type="button" class="btn btn-success btn-sm" > + </a>                         </a>
+
+                    </td>
+                    <td>{{ item.product.price * item.quantity }} {{'€'}} </td>
+                    <td>
+                        <a href="{{ path('cart_removeAll', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="3" class="text-right" >Total :</td>
+                <td>{{ total }} {{'€'}} </td>
+                <td></td>
+            </tr>
+            <tr>
+                {% if  app.user %}
+                    <td colspan="3" class="text-right" >
+                        <a href="{{ path('Sold') }}"  class="btn btn-success">Confirmer la commande </a>
+                    </td>
+                {% endif %}
+            </tr>
+
+            </tfoot>
+
+        </table>
+
+
+    {% else %}
+    <div class="jumbotron">
+		<p>Votre Panier est vide, penser à ajouter des produits</p>
+	</div>
+    {% endif %}
+{% endblock %}

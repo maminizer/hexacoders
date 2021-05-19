@@ -1,0 +1,111 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+
+    <div class="col-sm-12 col-sm-offset-3 col-lg-12 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#">
+                        <em class="fa fa-home"></em>
+                    </a></li>
+                <li class="active">Produits</li>
+            </ol>
+        </div><!--/.row-->
+
+
+        <hr>
+        <div class="col-lg-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body"><h5 class="card-title">Table with hover</h5>
+        <table class="mb-12 table table-hover" id="table_id">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Descreption</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>En vente</th>
+                <th>appercu</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr></thead>
+            <tbody id="allTTT">
+            <tr {% for p in produit %}>
+                <th scope="row">{{ p.id }}</th>
+                <td>{{ p.title }}</td>
+                <td>{{ p.description }}</td>
+                <td>{{ p.price | number_format(0, ',', ' ') }} DT</td>
+                <td>{{ p.quantity }}</td>
+                <td>{% if p.enVente == '1' %}
+                        <span>disponible</span>
+                    {% elseif p.enVente == '0' %}
+                        <span>non disponible</span>
+                    {% endif %}</td>
+                <td><img src ="{{ asset('uploads/images/' ~ p.image) }}"
+                         alt ="" style = "width:100px ; height:100px"></td>
+                <td> <a href="{{ path('update',{'id':p.id}) }}"> Update </a> </td>
+                <td> <a href="{{ path('d',{'id':p.id}) }}"> Delete </a> </td>
+                <td> <a href="{{ path('AfficheProduitAdminDetaill',{'id':p.id}) }}"> Detaill </a> </td>
+
+            </tr {% endfor %}>
+            </tbody>
+            <tbody id="search11"></tbody>
+        </table>
+                </div></div></div>
+        <a href="{{ path('ajout') }}" class="mb-2 mr-2 btn btn-primary btn-lg btn-block"> ajouter un nouveaux Produit </a>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $( document ).ready(function() {
+                $("#search").keyup(function(e){
+                    /* La variable value va prendre la valeur insérer dans le champ de texte
+                    afin d’effectuer la recherche */
+                    var value = $(this).val();
+                    /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                    « search » pour faire la recherche */
+                    $.ajax({
+                        /* l’url est une chaine de caractères contenant l’adresse où la requête est
+                        envoyée */
+                        url : "{{ path('search') }}",
+                        /* La méthode utilisée pour transférer les données est GET */
+                        type : 'GET',
+                        /*Ici search value va prendre la chaine entrée par un utilisateur dans la
+                        zone de recherche et sera placée après l’url */
+                        data: {
+                            'searchValue' : value
+                        },
+                        /*Cette fonction permet de vider le contenu du tableau pour recevoir le
+                        nouveau contenu*/
+                        success : function(retour){
+                            if(retour){
+                                $("#search11").empty();
+
+                                $.each(JSON.parse(retour), function(i, obj) {
+                                    $("#allTTT").hide();
+                                    $("#search11").append(
+                                        '<tr>' +
+                                        '<td> '+obj.id+' </td>' +
+                                        '<td> '+obj.title+' </td>' +
+                                        '<td> '+obj.description+' </td>' +
+                                        '<td> '+obj.price+' </td><td> '+obj.quantity+' </td>' +
+                                        '<td>'+obj.enVente+'</td>' +
+                                        '<td><img alt ="" style = "width:100px ; height:100px" src="/uploads/images/'+obj.image+'"></td>' +
+                                        '<td><a class="" href="update'+obj.id+'">Modifer</a></td>' +
+                                        '<td><a class="" href="d'+obj.id+'">Supprimer</a></td>' +
+                                        '<td><a class="" href="AfficheProduitAdminDetaill'+obj.id+'">Detaill</a></td></tr>');
+                                });
+                            }
+                            else
+                            {
+                                $('#allTTT').show();
+                                $('#search11').empty();
+                                $('#search11').fadeIn('fast');
+                            }
+
+                        },
+                    });
+                    return false;
+                });
+            });
+        </script>
+    </div>
+{% endblock %}

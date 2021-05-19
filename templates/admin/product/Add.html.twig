@@ -1,0 +1,61 @@
+{% extends 'admin/base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li>
+					<a href="#">
+						<em class="fa fa-home"></em>
+					</a>
+				</li>
+				<li class="active">
+					Produits/Ajout
+				</li>
+			</ol>
+		</div>
+		<!--/.row-->
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">
+					Ajouter un Produit
+				</h1>
+			</div>
+		</div>
+		{{ form_start(form,{'attr': {'novalidate': 'novalidate'}}
+		) }}
+
+		{{ form_errors(form.title) }}
+		{{ form_label(form.title, "Nom du Produit") }}
+		{{ form_widget(form.title) }}
+
+		{{ form_errors(form.description) }}
+		{{ form_label(form.description, "Description du Produit") }}
+		{{ form_widget(form.description) }}
+
+		{{ form_errors(form.price) }}
+		{{ form_label(form.price, "Prix du Produit") }}
+		{{ form_widget(form.price) }}
+
+		{{ form_errors(form.quantity) }}
+		{{ form_label(form.quantity, "Quantité du Produit") }}
+		{{ form_widget(form.quantity) }}
+
+		{{ form_errors(form.categorie) }}
+		{{ form_label(form.categorie, "Catégorie du Produit") }}
+		{{ form_widget(form.categorie) }}
+
+		{{ form_errors(form.image) }}
+		{{ form_label(form.image, "Image du Produit") }}
+		{{ form_widget(form.image) }}
+
+		{{ form_errors(form.enVente) }}
+		{{ form_label(form.enVente, "Disponibilité du Produit") }}
+		{{ form_widget(form.enVente) }}
+
+
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+ {% extends 'base.html.twig' %}
+ {% block Collection %}
+										
+{% for cataloguee in catalogu %}
+
+      <li class="col-md-2">
+          <ul>
+
+              <li class="dropdown-header">
+
+                  {{ cataloguee.nom }}
+
+              </li>
+             {% for categor in cataloguee.getCategories().getValues() %}
+              <li><a href="#">
+              
+                  {{ categor.nom }}
+              </a></li>
+              {% endfor %}
+ 
+          </ul>
+      </li>
+  {% endfor %}
+{% endblock %}

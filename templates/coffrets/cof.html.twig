@@ -1,0 +1,145 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="col-md-12">
+        <div class="main-card mb-3 card">
+            <div class="card-header">List Coffrets
+
+            </div>
+            <div class="table-responsive">
+     
+                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th style="padding-left: 2%">Id</th>
+                        <th>nom</th>
+                        <th style="padding-left: 3%">description</th>
+                        <th style="padding-left: 5%">image</th>
+                        <th style="padding-left: 2%">prix</th>
+                      
+                      <th>products</th>
+                      <th>somme</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                 
+                
+
+                    <tr>
+                        <td class="text-center text-muted">{{ d.id }}</td>
+                        <td>
+                            <div class="widget-content p-0">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left flex2">
+                                        <div class="widget-heading">{{ d.nom }}</div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                          <td class="text-center text-muted">{{ d.description }}</td>
+                     
+                         <td>
+                            <div class="widget-content p-0">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left flex2">
+                                        <div class="widget-heading"><img src="{{ asset('uploads/images/' ~ d.image) }}"  alt ="" style = "width:100px ; height:100px"></div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                          <td class="text-center text-muted">{{ d.prix }}</td>
+                        
+                        <td class="text-center text-muted">
+                        <table>
+                      
+                        {% for dd in d.getProductCoffrets()%}
+                       
+                       
+                        <tr>
+                        <td>
+                        {{dd.title}}
+                        <br/>
+                        </td>
+                       <td>
+                        <img src="{{ asset('uploads/images/' ~ d.image) }}"  alt ="" style = "width:100px ; height:100px">
+                        <br/>
+                        </td>
+                          <td>
+                        {{dd.price}}DT
+                        <br/>
+                        </td>
+                       <td>
+                        </tr>
+                        {% endfor %}
+                        </table>
+                        </td>
+                        <td class="text-center">
+              
+      {% set promo=0 %}
+      {% set off=0 %}
+      {% set somme=0 %}
+                        {% for dd in d.getProductCoffrets()%}
+                        {% set promo=dd.price+promo %}
+                        {% endfor %}
+                   {% set off=(100-d.offre)/100 %}     
+                            {% set somme=promo*off %}
+                            {{somme}}
+                        </td>
+                    </tr>
+                  
+                    </tbody>
+                   
+                </table>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v10.0" nonce="0jZT3yYZ"></script>
+           
+           <div class="fb-share-button" href="{{ path('afficheDetaille',{'id':d.id}) }}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8001%2Fcoffrets%2FDetails%2F6&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Partager</a></div>
+            </div>
+        </div>
+    </div>
+     <link href="{{ asset('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i') }}" rel="stylesheet">
+
+  
+    <script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+ 
+
+ancien coffrets
+ 
+
+  <body>
+    <div class="slider owl-carousel">
+    {% for d in data %}
+      <div class="card">
+        <div class="img">
+<img src="{{ asset('uploads/images/' ~ d.image) }}"  alt ="" ></div>
+<div class="content">
+          <div class="title">
+{{d.nom}}</div>
+<div class="sub-title">
+{{d.prix}}DT</div>
+<p>
+{{d.description}}
+</p>
+<div  >
+            <a href="{{ path('afficheDetaille',{'id':d.id}) }}" class="btn btn-primary" style="width:120px">Read more</a>
+              
+          </div>
+</div>
+
+</div>
+{% endfor %}
+
+</div>
+<script>
+      $(".slider").owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 2000, //2000ms = 2s;
+        autoplayHoverPause: true,
+      });
+    </script>
+
+
+

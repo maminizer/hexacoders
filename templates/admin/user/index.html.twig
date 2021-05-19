@@ -1,0 +1,123 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+
+
+{% block body %}
+    {% set i = 0 %}
+    {% for user in users %}
+    {% if user.isVerified == "1"%}
+        {% set  i = i+1 %}
+    {% endif %}
+    {% endfor %}
+<div class="row">
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-midnight-bloom">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Nombre Totale</div>
+                    <div class="widget-subheading">les clients inscrits dans le site </div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white"><span>{{ users | length }}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-arielle-smile">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Clients Verifiés</div>
+                    <div class="widget-subheading">Total Clients avec un email vérifié</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white"><span>{{ i }}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-grow-early">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Clients  non Verifiés</div>
+                    <div class="widget-subheading">Total Clients avec un email encore non vérifié</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-white"><span>{{ users | length - i }}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="main-card mb-3 card">
+            <div class="card-header">Active Users
+
+            </div>
+            <div class="table-responsive">
+                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th style="padding-left: 2%">Id</th>
+                        <th>Email</th>
+                        <th style="padding-left: 5%">IsVerified</th>
+                        <th style="padding-left: 12%">actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set i = 0 %}
+                    {% for user in users %}
+
+                    <tr>
+                        <td class="text-center text-muted">{{ user.id }}</td>
+                        <td>
+                            <div class="widget-content p-0">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left flex2">
+                                        <div class="widget-heading">{{ user.email }}</div>
+                                        <div class="widget-subheading opacity-7">{{user.firstname}} {{user.lastname}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            {% if user.isVerified == "1" %}
+                            <div class="badge badge-success">{{ user.isVerified ? 'Oui' : 'Non' }}</div>
+                            {% else %}
+                            <div class="badge badge-danger">{{ user.isVerified ? 'Oui' : 'Non' }}</div>
+                                {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <a href="{{ path('user_show', {'id': user.id}) }}">
+                                <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
+                            </a>
+                            {% if ("ROLE_ADMIN"  in user.roles) %}
+                            <a href="{{ path('user_edit', {'id': user.id}) }}">
+                                <button type="button" id="PopoverCustomT-1" class="btn btn-warning btn-sm">Modifier</button>
+                            </a>
+                            {% endif %}
+                            {% if ("ROLE_ADMIN" not in user.roles) %}
+                                {% if  ("ROLE_BANNED" in user.roles)  %}
+
+                                <a href="{{ path('user_unban', {'id': user.id}) }}">
+                                    <button type="button" id="PopoverCustomT-1" class="btn btn-danger btn-sm">Débloquer</button>
+                                </a>
+                                 {% else %}
+
+                            <a href="{{ path('user_ban', {'id': user.id}) }}">
+                                <button type="button" id="PopoverCustomT-1" class="btn btn-danger btn-sm">Bloquer</button>
+                            </a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

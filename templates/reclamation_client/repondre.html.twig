@@ -1,0 +1,61 @@
+{% extends 'admin/base.html.twig' %}
+
+
+
+{%  block body   %}
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css" rel="stylesheet">
+
+
+    <div id="main">
+        <h1>Réponse </h1>
+
+        <form action="#" method="post">
+            {{ form_start(form) }}
+
+
+
+            <div>
+                {{ form_label(form.Message, 'Message') }}<br />
+
+                <div class='form-input'>
+                    {{ form_widget(form.Message) }}
+                    {{ form_errors(form.Message) }}
+                </div>
+            </div>
+
+
+
+
+            <div>
+                {{ form_label(form.Date, 'Date de Réponse') }}<br />
+
+                <div class='form-input'>
+                    {{ form_widget(form.Date) }}
+                    {{ form_errors(form.Date) }}
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+
+
+
+
+
+
+
+
+
+            {{ form_end(form) }}
+        </form>
+
+    </div>
+
+{% endblock %}
+

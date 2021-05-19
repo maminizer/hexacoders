@@ -1,0 +1,93 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#">
+                        <em class="fa fa-home"></em>
+                    </a></li>
+                <li class="active">Produits/ID Produit: {{ produit.id }}</li>
+            </ol>
+        </div><!--/.row-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Détaille</h1>
+            </div>
+        </div>
+    <div class="col-lg-6">
+    <div class="main-card mb-3 card">
+    <div class="card-body"><h5 class="card-title">Table with hover</h5>
+        <table class="mb-0 table table-hover">
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Appercu</th>
+                <th>Descreption</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>En vente</th>
+
+
+
+            </tr>
+            <tr>
+                <th scope="row">{{ produit.id }}</th>
+                <td>{{ produit.title }}</td>
+                <td><img src ="{{ asset('uploads/images/' ~ produit.image) }}"
+                         alt ="" style = "width:100px ; height:100px"></td>
+                <td>{{ produit.description }}</td>
+                <td>{{ produit.price | number_format(0, ',', ' ') }} DT</td>
+                <td>{{ produit.quantity }}</td>
+                <td>{% if produit.enVente == '1' %}
+                        <span>disponible</span>
+                    {% elseif produit.enVente == '0' %}
+                        <span>non disponible</span>
+                    {% endif %}</td>
+                <td> <a href="{{ path('update',{'id':produit.id}) }}"> Update </a> </td>
+                <td> <a href="{{ path('d',{'id':produit.id}) }}"> Delete </a> </td>
+
+
+            </tr>
+
+        </table>
+    </div></div></div>
+        <div class="row">
+            <div class="col-md">
+                <div class="panel panel-default articles">
+                    <div class="panel-heading">
+                        Commentaires
+
+                        <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+
+                    {% for commentaire in produit.commentaires %}
+                    <div class="panel-body articles-container">
+                        <div class="article border-bottom">
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-2 date">
+                                        <div class="large">30</div>
+                                        <div class="text-muted"><a href="{{ path('modifierCommentaireAdmin',{'id':commentaire.id}) }}"> Modifier </a></div>
+                                    </div>
+                                    <div class="col-xs-10 col-md-10">
+                                        <h4><a href="#">{{commentaire.contenu | raw}}</a></h4>
+                                        <p>{{commentaire.id}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        {% endfor %}
+                        <section id="commentaires">
+
+                            <a href="{{ path('ajoutCommentaireA',{'id':produit.id}) }}"> ajouter un nouveaux Commentaire </a>
+
+                            <a href="{{ path('AfficheProduit') }}"> Retour</a>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

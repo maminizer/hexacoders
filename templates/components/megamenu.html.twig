@@ -1,0 +1,51 @@
+<li class="dropdown mega-dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		Collection
+	</a>
+	<ul class="dropdown-menu mega-dropdown-menu row">
+	{% for catalogue in catalogues %}
+		<li class="col-md-3">
+			<ul>
+				<li class="dropdown-header">
+					{{catalogue.nom}}
+				</li>
+				{% for categorie in catalogue.categories %}
+				<li>
+					<a href="{{ path('searchp' , { 'id' : categorie.id })}}">
+						{{categorie.nom}}
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</li>
+		{% endfor %}
+		<li class="col-md-3">
+			<ul>
+				<li id="myCarousel" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="item active">
+							<a href="#">
+								<img src="images/menu-banner1.jpg" class="img-responsive" alt="Banner1">
+							</a>
+						</div>
+						<!-- End Item -->
+						<div class="item">
+							<a href="#">
+								<img src="images/menu-banner2.jpg" class="img-responsive" alt="Banner1">
+							</a>
+						</div>
+						<!-- End Item -->
+						<div class="item">
+							<a href="#">
+								<img src="images/menu-banner3.jpg" class="img-responsive" alt="Banner1">
+							</a>
+						</div>
+						<!-- End Item -->
+					</div>
+					<!-- End Carousel Inner -->
+				</li>
+				<!-- /.carousel -->
+			</ul>
+		</li>
+	</ul>
+</li>

@@ -1,0 +1,250 @@
+{% block body %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset ('/css/commande.css') }}" rel="stylesheet"/>
+    <link href="{{ asset ('/css/style.css')  }}" rel="stylesheet"/>
+    <style type="text/css">
+
+        /* shopping cart page */
+        .goods-data {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            margin-right: 10px;
+        }
+        .goods-data table,
+        .checkout-page table {
+            width: 100%;
+            font: 300 13px 'Open Sans', sans-serif;
+        }
+        .goods-data th,
+        .checkout-page th {
+            font: 16px "PT Sans Narrow", sans-serif;
+            text-transform: uppercase;
+            border-bottom: solid 1px #ecebeb;
+            padding-bottom: 8px;
+        }
+        .goods-data td,
+        .checkout-page td {
+            vertical-align: top;
+            padding: 20px 20px 20px 0;
+            border-bottom: solid 1px #ecebeb;
+        }
+        .goods-page-image,
+        .checkout-image {
+            width: 105px;
+        }
+        .goods-page-image img,
+        .checkout-image img {
+            width: 75px;
+        }
+        .goods-page-price,
+        .goods-page-total,
+        .checkout-price,
+        .checkout-total {
+            font-family: 'PT Sans Narrow', sans-serif;
+        }
+        .goods-page-price strong,
+        .goods-page-total strong,
+        .checkout-price strong,
+        .checkout-total strong {
+            color: #e74c3c;
+            font-size: 21px;
+            font-weight: normal;
+        }
+        .goods-page-price strong span,
+        .goods-page-total strong span,
+        .checkout-price strong span,
+        .checkout-total strong span  {
+            font-size: 17px;
+        }
+        .goods-data h3,
+        .checkout-page .checkout-description h3 {
+            font: 300 14px 'Open Sans', sans-serif;
+            text-transform: inherit;
+            padding: 0;
+            margin: 0 0 5px;
+        }
+        .goods-data p,
+        .checkout-description p {
+            margin-bottom: 2px;
+        }
+        .goods-data a,
+        .checkout-page .checkout-description a {
+            color: #e74c3c;
+        }
+        .goods-page-description em,
+        .checkout-description em {
+            display: block;
+            font-style: normal;
+        }
+        .goods-page .btn-default {
+            float: left;
+            border: 1px solid #5ea8dc;
+            background: #5ea8dc;
+            color: #fff;
+        }
+        .goods-page .btn-default:hover {
+            border: 1px solid #408cc2;
+            background: #408cc2;
+        }
+        .goods-page .btn-primary {
+            float: right;
+            margin-right: 10px;
+        }
+
+        .goods-data .del-goods,
+        .goods-data .add-goods {
+            margin-top: 4px;
+        }
+
+        .shopping-total,
+        .checkout-total-block {
+            width: 230px;
+            float: right;
+            padding-top: 9px;
+            color: #3e4d5c;
+        }
+        .checkout-total-block {
+            margin-bottom: 20px;
+        }
+        .shopping-total ul,
+        .checkout-total-block ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .shopping-total li,
+        .checkout-total-block li {
+            border-bottom: solid 1px #ecebeb;
+            width: 100%;
+            overflow: hidden;
+            padding: 9px 0;
+        }
+        .shopping-total li:last-child,
+        .checkout-total-block li:last-child {
+            border: none;
+        }
+        .shopping-total em,
+        .checkout-total-block em {
+            font: 18px 'PT Sans Narrow', sans-serif;
+            float: left;
+            text-transform: uppercase;
+            position: relative;
+            top: 2px;
+        }
+        .shopping-total strong,
+        .checkout-total-block strong {
+            color: #e74c3c;
+            font: 21px 'PT Sans Narrow', sans-serif;
+            font-weight: normal;
+            float: right;
+        }
+        .shopping-total strong span,
+        .checkout-total-block strong span {
+            font-size: 17px;
+        }
+        .shopping-total-price,
+        .checkout-total-price {
+            font-weight: bold;
+        }
+        .shopping-total-price strong,
+        .checkout-total-price strong {
+            font-weight: bold;
+        }
+
+        table .product-quantity,
+        table .product-quantity .input-group {
+            margin-right: 0;
+        }
+        .product-page-cart .btn {
+            padding: 7px 20px;
+            font-size: 13px;
+            height: 38px;
+        }
+        .product-quantity input.form-control {
+            border: none;
+            background: #edeff1 !important;
+            font: 300 23px 'Open Sans', sans-serif;;
+            color: #647484;
+            height: 38px;
+            width: 50px;
+            text-align: center;
+            padding: 5px;
+
+        }
+
+
+        .rectangle {
+            height: 5px;
+            width: 100%;
+            background-color: #e74c3c;
+            margin-bottom : 50px;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+{% set total = 0 %}
+    <div class="goods-data clearfix">
+        <div class="table-wrapper-responsive">
+            <table summary="Shopping cart">
+
+                <tbody><tr>
+                    <th class="goods-page-image"></th>
+                    <th class="goods-page-description">Nom du produit</th>
+                    <th class="goods-page-quantity">Quantite</th>
+                    <th class="goods-page-price">Prix Unitaire</th>
+                    <th class="goods-page-total" colspan="2">Totale</th>
+                </tr>
+                {% for item in commande %}
+                    <tr>
+                        <td class="goods-page-image">
+                            <a href="#"><img src="{{'http://127.0.0.1:8000' ~ asset('uploads/images/') ~ item.productImage }}" alt="Produit"></a>
+                        </td>
+
+                        <td class="goods-page-description">
+                            <h3><a href="{{ 'http://127.0.0.1:8000' ~ path('AfficheProduitClientDetaill',{'id':item.productId})}}">{{item.productTitle}}</a></h3>
+                            <p>{{item.productDes}}</p>
+                        </td>
+                        <td class="goods-page-quantity">
+                            <div class="product-quantity">
+                                <div class="input-group bootstrap-touchspin input-group-sm"><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input id="product-quantity2" type="text" value="{{item.quantity}}" readonly="" class="form-control input-sm" style="display: block;"></div>
+                            </div>
+                        </td>
+                        <td class="goods-page-price">
+                            <strong><span>$</span>{{item.prix}}</strong>
+                        </td>
+                        <td class="goods-page-total">
+                            {% set totale = item.prix * item.quantity %}
+                            {% set total = total + totale %}
+                            <strong><span>$</span>{{totale}}</strong>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody></table>
+            <div class="rectangle">
+
+            </div>
+        </div>
+
+        <div class="shopping-total">
+            <ul>
+                <li class="shopping-total-price">
+                    <em>Total</em>
+                    <strong class="price"><span>$</span>{{total}}</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}

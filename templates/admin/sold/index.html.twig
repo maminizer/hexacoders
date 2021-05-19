@@ -1,0 +1,91 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+
+
+{% block body %}
+        {% set x = 0 %}
+        {% set y = 0 %}
+        {% for p in prods %}
+        {% set  x = p.qteSold + x %}
+        {% set  y = (p.prixUnitaire)*p.qteSold + y %}
+        {% endfor %}
+    <div class="row">
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-midnight-bloom">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Nombre Totale</div>
+                        <div class="widget-subheading">des produits vendus </div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-white"><span>{{ prods | length }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-arielle-smile">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Quantité Totale</div>
+                        <div class="widget-subheading">Quantité totale vendus du produits</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-white"><span>{{ x }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-grow-early">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Chiffre d'affaires</div>
+                        <div class="widget-subheading">Capitale totale vendu</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-white"><span>{{ y }} €</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="card-header">Active Users</div>
+                <div class="table-responsive">
+                    <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th style="padding-left: 2%" >Id Produit</th>
+                            <th>Nom du Produit </th>
+                            <th style="padding-left: 5%" >Prix</th>
+                            <th style="padding-left: 12%" > Quantité Vendue</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for p in prods %}
+                            <tr>
+                                <td class="text-center text-muted"> {{ p.idProduit }} </td>
+                                <td>
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left flex2">
+                                                <div class="widget-heading">{{ p.title }}</div>
+                                                <div class="widget-subheading opacity-7"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center text-muted">{{ p.prixUnitaire }}</td>
+                                <td class="text-center text-muted">{{ p.qteSold }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

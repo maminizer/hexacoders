@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+{%  block body   %}
+    <div id="main">
+
+
+
+
+        <h1>Ajouter une Reclamation</h1>
+
+        <form action="#" method="post">
+            {{ form_start(form) }}
+
+            <div>
+                {{ form_label(form.Nom, 'Nom') }}<br />
+
+                <div class='form-input'>
+                    {{ form_widget(form.Nom) }}
+                    {{ form_errors(form.Nom) }}
+                </div>
+            </div>
+
+            <div>
+                {{ form_label(form.Email, 'Email') }}<br />
+
+                <div class='form-textarea'>
+                    {{ form_errors(form.Email) }}
+                    {{ form_widget(form.Email) }}
+                </div>
+            </div>
+
+
+            <div>
+                {{ form_label(form.Numero_telephone, 'Numero de Telephone:') }}<br />
+
+                <div class='form-input'>
+                    {{ form_errors(form.Numero_telephone) }}
+                    {{ form_widget(form.Numero_telephone) }}
+                </div>
+            </div>
+
+
+            <div>
+                {{ form_label(form.Type_reclamation, 'Type de reclamation') }}<br />
+
+                <div class='form-input'>
+                    {{ form_widget(form.Type_reclamation) }}
+                    {{ form_errors(form.Type_reclamation,) }}
+                </div>
+            </div>
+
+
+
+             <div>
+                {{ form_label(form.Date, 'Date de création') }}<br />
+
+                <div class='form-input'>
+                    {{ form_widget(form.Date) }}
+                    {{ form_errors(form.Date) }}
+                </div>
+            </div>
+
+
+
+            <div>
+                {{ form_label(form.Priorite, 'Priorite') }}<br />
+
+                <div class='form-input'>
+                    {{ form_widget(form.Priorite) }}
+                    {{ form_errors(form.Priorite) }}
+                </div>
+            </div>
+
+            <div>
+                {{ form_label(form.Message, 'Message') }}<br />
+
+                <div class='form-input'>
+                    {{ form_widget(form.Message) }}
+                    {{ form_errors(form.Message) }}
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            {{ form_end(form) }}
+        </form>
+
+    </div>
+
+{% endblock %}
+

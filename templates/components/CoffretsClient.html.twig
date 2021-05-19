@@ -1,0 +1,106 @@
+<!-- =====  PRODUCT TAB  ===== -->
+<div id="product-tab" class="mt_40">
+	<div class="heading-part mb_20 ">
+		<h2 class="main_title">
+			Nos Coffrets
+		</h2>
+	</div>
+	<ul class="nav text-right">
+		<li class="active">
+			<a href="#nArrivals" data-toggle="tab">
+				New Arrivals
+			</a>
+		</li>
+		<li>
+			<a href="#Bestsellers" data-toggle="tab">
+				Bestsellers
+			</a>
+		</li>
+		<li>
+			<a href="#Featured" data-toggle="tab">
+				Featured
+			</a>
+		</li>
+	</ul>
+	<div class="tab-content clearfix box">
+		<div class="tab-pane active" id="nArrivals">
+			<div class="nArrivals owl-carousel">
+
+				{% for d in data %}
+					<div class="product-grid">
+
+						<div class="item">
+							<div class="product-thumb">
+								<div class="image product-imageblock">
+									<a href="{{ path('afficheDetaille',{'id':d.id}) }}">
+										<img data-name="product_image" src="{{ asset('uploads/images/') ~ '/' ~ d.image }}" alt="iPod Classic" title="{{ d.nom }}" class="img-responsive" style="height: 220px">
+										<img src="{{ asset('uploads/images/') ~ '/' ~ d.image }}" alt="iPod Classic" title="{{ d.nom }}" style="height: 220px">
+									</a>
+								</div>
+								<div class="caption product-detail text-left">
+									<h6 data-name="product_name" class="product-name mt_20">
+										<a href="#" title="{{ d.nom }}">
+											{{ d.nom }}
+										</a>
+									</h6>
+
+									<span class="price">
+										<span class="amount">
+											<span class="currencySymbol">
+												€
+											</span>
+											{{ d.prix }}
+										</span>
+									</span>
+									<a href="{{ path('afficheDetaille',{'id':d.id}) }}" class="btn btn-link">
+										
+Read More
+									</a>
+									<div class="button-group text-center">
+										<a href="#">
+
+											<div class="wishlist">
+												<span>
+													wishlist
+												</span>
+
+											</div>
+										</a>
+										<div class="quickview">
+											<a href="#">
+												<span>
+													Quick View
+												</span>
+											</a>
+										</div>
+
+										<a href="">
+											<div class="add-to-cart">
+												<span>
+													Add to cart
+												</span>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				{% endfor %}
+			</div>
+			<div class="tab-pane" id="Bestsellers">
+				<div
+					class="Bestsellers owl-carousel"><!-- ===== bestsellers goes here ==== -->
+				</div>
+			</div>
+			<div class="tab-pane" id="Featured">
+				<div
+					class="Featured owl-carousel"><!-- ===== Featured goes here ==== -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- =====  PRODUCT TAB  END ===== -->
+

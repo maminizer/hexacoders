@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<div class="category-page-wrapper mb_30">
+		<div class="col-xs-6 col-md-12 sort-wrapper">
+		{% include "components/searchfilter.html.twig" with {form :form , min : min , max : max} %}
+		</div>	
+	</div>
+	<div class="row">
+		{% for product in articles %}
+			<div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+				<div class="item">
+							<div class="product-thumb">
+								<div class="image product-imageblock">
+									<a href="{{ path('AfficheProduitClientDetaill',{'id':product.id}) }}">
+										<img data-name="product_image" src="{{ asset('uploads/images/') ~ '/' ~ product.image }}" alt="iPod Classic" title="{{ product.title }}" class="img-responsive" >
+										<img src="{{ asset('uploads/images/') ~ '/' ~ product.image }}" alt="iPod Classic" title="{{ product.title }}" >
+									</a>
+								</div>
+								<div class="caption product-detail text-left">
+									<h6 data-name="product_name" class="product-name mt_20">
+										<a href="#" title="{{ product.title }}">
+											{{ product.title }}
+										</a>
+									</h6>
+									<div class="rating"></div>
+									<span class="price">
+										<span class="amount">
+											<span class="currencySymbol">
+												€
+											</span>
+											{{ product.price }}
+										</span>
+									</span>
+									{% if app.user %}
+									<div class="button-group text-center">
+										<a href="{{ path('add_item', {'id': product.id} ) }}">
+											<div class="add-to-cart">
+												<span>
+													Add to cart
+												</span>
+											</div>
+										</a>
+									</div>
+									{% else %}
+										<div class="button-group text-center">
+											<a href="{{ path('app_login') }}">
+												<div class="add-to-cart">
+												<span>
+													Add to cart
+												</span>
+												</div>
+											</a>
+										</div>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+			</div>
+		{% endfor %}
+	</div>
+
+{{ knp_pagination_render(articles, 'components/pagination.html.twig') }}
+
+{% endblock %}
+
+
+
+
+

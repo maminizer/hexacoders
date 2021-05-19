@@ -1,0 +1,37 @@
+
+<div id="left-special" class="owl-carousel">
+    <ul class="row ">
+        {% for i in items %}
+            <li class="item product-layout-left mb_20">
+                <div class="product-list col-xs-4">
+                    <div class="product-thumb">
+                        <div class="image product-imageblock">
+                            <a href="product_detail_page.html">
+                                <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="{{ asset('/ProductImages') ~ '/' ~ i.image }}">
+                                <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src=""{{ asset('/ProductImages') ~ '/' ~ i.image }}"">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="caption product-detail">
+                        <h6 class="product-name">
+                            <a href="#">
+                                {{ i.title }}
+                            </a>
+                        </h6>
+                        <span class="price">
+													<span class="amount">
+														<span class="currencySymbol">
+															€
+														</span>
+														{{ i.price }}
+													</span>
+												</span>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+

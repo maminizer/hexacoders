@@ -1,608 +1,624 @@
 <!DOCTYPE html>
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
-<!--<![endif]-->
+<html
+	lang="en">
+	<!--<![endif]-->
 
-<head>
-    <!-- =====  BASIC PAGE NEEDS  ===== -->
-    <meta charset="utf-8">
-    {% block title %}
-    <title>TuniPharma</title>
-    {% endblock %}
-    <!-- =====  SEO MATE  ===== -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="distribution" content="global">
-    <meta name="revisit-after" content="2 Days">
-    <meta name="robots" content="ALL">
-    <meta name="rating" content="8 YEARS">
-    <meta name="Language" content="en-us">
-    <meta name="GOOGLEBOT" content="NOARCHIVE">
-    <!-- =====  MOBILE SPECIFICATION  ===== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="viewport" content="width=device-width">
-    <!-- =====  CSS  ===== -->
-    {% block css %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}" />
-    <script src="{{  asset('https://use.fontawesome.com/1509af9ee1.js')}}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.css') }}">
-    <link rel="shortcut icon" href="{{ asset('/images/favicon.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('/images/apple-touch-icon.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/images/apple-touch-icon-72x72.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/images/apple-touch-icon-114x114.png') }}">
-    {% endblock %}
-</head>
+	<head>
+		<script src="https://kit.fontawesome.com/280e4c1d6d.js" crossorigin="anonymous"></script>
 
-<body>
-<!-- =====  LODER  ===== -->
-<div class="loder"></div>
+		<!-- =====  BASIC PAGE NEEDS  ===== -->
+		<meta charset="utf-8">
+		<title>
+			TuniPharma
+		</title>
+		<!-- =====  SEO MATE  ===== -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="distribution" content="global">
+		<meta name="revisit-after" content="2 Days">
+		<meta name="robots" content="ALL">
+		<meta name="rating" content="8 YEARS">
+		<meta name="Language" content="en-us">
+		<meta
+		name="GOOGLEBOT" content="NOARCHIVE">
+		<!-- =====  MOBILE SPECIFICATION  ===== -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta
+		name="viewport" content="width=device-width">
+		<!-- =====  CSS  ===== -->
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+		<script src="https://use.fontawesome.com/1509af9ee1.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/css/magnific-popup.css">
+		<link rel="stylesheet" type="text/css" href="/css/owl.carousel.css">
+		<link rel="shortcut icon" href="images/favicon.png">
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+		{# {{ encore_entry_link_tags('app')}}
+		{{ encore_entry_script_tags('app') | replace ({'src=' : 'defer src='}) | raw }} #}
+	</head>
+	<! -- ==== CHECK IF USER IS BANNED ==== -->
+	{% if app.user and ("ROLE_BANNED" in app.user.roles) %}
+		<div id="container_anim" style="position:relative ; width:100% ; height:100%; background-color: salmon">
+			<div id="lock" class="key-container" style="position:absolute ; top:10% ; left:40%">
+				<?xml
+				version="1.0" standalone="no"?>
+				<!-- Generator: Gravit.io -->
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="317.286 -217 248 354" width="248" height="354">
+					<g>
+						<path d="M 354.586 -43 L 549.986 -43 C 558.43 -43 565.286 -36.144 565.286 -27.7 L 565.286 121.7 C 565.286 130.144 558.43 137 549.986 137 L 354.586 137 C 346.141 137 339.286 130.144 339.286 121.7 L 339.286 -27.7 C 339.286 -36.144 346.141 -43 354.586 -43 Z" style="stroke:none;fill:#2D5391;stroke-miterlimit:10;"/>
+						<g transform="matrix(-1,0,0,-1,543.786,70)">
+							<text transform="matrix(1,0,0,1,0,234)" style="font-family:'Quicksand';font-weight:700;font-size:234px;font-style:normal;fill:#4a4444;stroke:none;">
+								U
+							</text>
+						</g>
+						<g transform="matrix(-1,0,0,-1,530.786,65)">
+							<text transform="matrix(1,0,0,1,0,234)" style="font-family:'Quicksand';font-weight:700;font-size:234px;font-style:normal;fill:#8e8383;stroke:none;">
+								U
+							</text>
+						</g>
+						<path d="M 343.586 -52 L 538.986 -52 C 547.43 -52 554.286 -45.144 554.286 -36.7 L 554.286 112.7 C 554.286 121.144 547.43 128 538.986 128 L 343.586 128 C 335.141 128 328.286 121.144 328.286 112.7 L 328.286 -36.7 C 328.286 -45.144 335.141 -52 343.586 -52 Z" style="stroke:none;fill:#4A86E8;stroke-miterlimit:10;"/>
+						<g>
+							<circle vector-effect="non-scaling-stroke" cx="441.28571428571433" cy="63.46153846153848" r="10.461538461538453" fill="rgb(0,0,0)"/>
+							<rect x="436.055" y="66.538" width="10.462" height="34.462" transform="matrix(1,0,0,1,0,0)" fill="rgb(0,0,0)"/>
+						</g>
+					</g>
+				</svg>
+			</div>
+
+			<div id="key" style="position:absolute ; top:47% ; left:37%">
+				<?xml
+				version="1.0" standalone="no"?>
+				<!-- Generator: Gravit.io -->
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="232.612 288.821 169.348 109.179" width="169.348" height="109.179">
+					<g>
+						<path d=" M 382.96 349.821 L 368.96 349.821 L 368.96 314.821 L 382.96 307.821 L 382.96 349.821 Z " fill="rgb(55,49,49)"/>
+						<path d=" M 292.134 354.827 L 379.96 315.39 L 379.96 305.547 L 292.134 343.094 L 292.134 354.827 Z " fill="rgb(55,49,49)"/>
+						<path d=" M 280.96 340.109 L 401.96 288.821 L 401.96 340.109 L 382.96 349.972 L 382.96 308.547 L 265.96 360.821 L 259.96 349.972 L 280.96 340.109 Z " fill="rgb(115,102,102)"/>
+						<path d=" M 401.96 288.821 L 382.96 288.821 L 280.96 332.821 L 292.134 340.109 L 401.96 288.821 Z " fill="rgb(115,102,102)"/>
+						<g>
+							<path d=" M 232.755 354.125 C 230.958 328.501 246.297 306.519 266.988 305.068 C 287.679 303.617 305.937 323.243 307.734 348.867 C 309.531 374.492 294.191 396.473 273.5 397.924 C 252.809 399.375 234.552 379.75 232.755 354.125 Z " fill="rgb(55,49,49)"/>
+							<path d=" M 239.241 352.316 C 237.564 328.406 252.144 307.876 271.779 306.499 C 291.414 305.122 308.716 323.416 310.393 347.326 C 312.07 371.236 297.49 391.766 277.855 393.143 C 258.22 394.52 240.917 376.226 239.241 352.316 Z " fill="rgb(115,102,102)"/>
+							<path d=" M 260.038 353.084 C 259.196 348.171 261.788 343.621 265.822 342.929 C 269.856 342.238 273.816 345.665 274.658 350.578 C 275.5 355.49 272.909 360.041 268.874 360.732 C 264.84 361.424 260.88 357.997 260.038 353.084 Z " fill="salmon"/>
+						</g>
+					</g>
+				</svg>
+			</div>
+		</div>
+
+		<p id="text" style="font-size:4rem;position:absolute;top:70%;width:100%;text-align:center">
+			403 FORBIDDEN
+		</p>
 
 
-   <!-- =====  HEADER START  ===== -->
-    <header id="header">
-      <div class="header-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6">
-              <ul class="header-top-left">
-                <li class="language dropdown"> <span class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button"> <img src="images/English-icon.gif" alt="img"> English <span class="caret"></span> </span>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#"><img src="images/English-icon.gif" alt="img"> English</a></li>
-                    <li><a href="#"><img src="images/French-icon.gif" alt="img"> French</a></li>
-                    <li><a href="#"><img src="images/German-icon.gif" alt="img"> German</a></li>
-                  </ul>
-                </li>
-                <li class="currency dropdown"> <span class="dropdown-toggle" id="dropdownMenu12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button"> USD <span class="caret"></span> </span>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu12">
-                    <li><a href="#">USD</a></li>
-                    <li><a href="#">EUR</a></li>
-                    <li><a href="#">AUD</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <div class="col-sm-6">
-              <ul class="header-top-right text-right">
-              {% if not app.user %}
-                <li class="account"><a href="/connexion">My Account</a></li>
-              {% else %}
-              <li class="account"><a href="/deconnexion">Deconnexion ( {{app.user.username}} ) </a></li>
-                {% endif %}
-                <li class="sitemap"><a href="#">Sitemap</a></li>
-                <li class="cart"><a href="cart_page.html">My Cart</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="header">
-        <div class="container">
-          <nav class="navbar">
-            <div class="navbar-header mtb_20"> <a  class="navbar-brand" href="/"> <img style="height:70px ;padding-left:50px" alt="HealthCared" src="images/logo.png"> </a> </div>
-            <div class="header-right pull-right mtb_50">
-              <button class="navbar-toggle pull-left" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="i-bar"><i class="fa fa-bars"></i></span></button>
-              <div class="shopping-icon">
-                <div class="cart-item " data-target="#cart-dropdown" data-toggle="collapse" aria-expanded="true" role="button">Item's : <span class="cart-qty">02</span></div>
-                <div id="cart-dropdown" class="cart-menu collapse">
-                  <ul>
-                    <li>
-                      <table class="table table-striped">
-                        <tbody>
-                          <tr>
-                            <td class="text-center"><a href="#"><img src="public/images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a></td>
-                            <td class="text-left product-name"><a href="#">MacBook Pro</a>
-                              <span class="text-left price">$20.00</span>
-                              <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
-                            </td>
-                            <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
-                          </tr>
-                          <tr>
-                            <td class="text-center"><a href="#"><img src="images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a></td>
-                            <td class="text-left product-name"><a href="#">MacBook Pro</a>
-                              <span class="text-left price">$20.00</span>
-                              <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
-                            </td>
-                            <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </li>
-                    <li>
-                      <table class="table">
-                        <tbody>
-                          <tr>
-                            <td class="text-right"><strong>Sub-Total</strong></td>
-                            <td class="text-right">$2,100.00</td>
-                          </tr>
-                          <tr>
-                            <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
-                            <td class="text-right">$2.00</td>
-                          </tr>
-                          <tr>
-                            <td class="text-right"><strong>VAT (20%)</strong></td>
-                            <td class="text-right">$20.00</td>
-                          </tr>
-                          <tr>
-                            <td class="text-right"><strong>Total</strong></td>
-                            <td class="text-right">$2,122.00</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </li>
-                    <li>
-                      <form action="cart_page.html">
-                        <input class="btn pull-left mt_10" value="View cart" type="submit">
-                      </form>
-                      <form action="checkout_page.html">
-                        <input class="btn pull-right mt_10" value="Checkout" type="submit">
-                      </form>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="main-search pull-right">
-                <div class="search-overlay">
-                  <!-- Close Icon -->
-                  <a href="javascript:void(0)" class="search-overlay-close"></a>
-                  <!-- End Close Icon -->
-                  <div class="container">
-                    <!-- Search Form -->
-                    <form role="search" id="searchform" action="/search" method="get">
-                      <label class="h5 normal search-input-label">Enter keywords To Search Entire Store</label>
-                      <input value="" name="q" placeholder="Search here..." type="search">
-                      <button type="submit"></button>
-                    </form>
-                    <!-- End Search Form -->
-                  </div>
-                </div>
-                <div class="header-search"> <a id="search-overlay-btn"></a> </div>
-              </div>
-            </div>
-            <div class="collapse navbar-collapse js-navbar-collapse pull-right">
-              <ul id="menu" class="nav navbar-nav">
-                <li> <a href="/">Home</a></li>
-                <li> <a href="category_page.html">Shop</a></li>
-                <li> <a href="blog_page.html">Blog</a></li>
-                <li class="dropdown mega-dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collection </a>
-                  <ul class="dropdown-menu mega-dropdown-menu row">
-                    <li class="col-md-3">
-                      <ul>
-                        <li class="dropdown-header">Women's</li>
-                        <li><a href="#">Unique Features</a></li>
-                        <li><a href="#">Image Responsive</a></li>
-                        <li><a href="#">Auto Carousel</a></li>
-                        <li><a href="#">Newsletter Form</a></li>
-                        <li><a href="#">Four columns</a></li>
-                        <li><a href="#">Four columns</a></li>
-                        <li><a href="#">Good Typography</a></li>
-                      </ul>
-                    </li>
-                    <li class="col-md-3">
-                      <ul>
-                        <li class="dropdown-header">Man's</li>
-                        <li><a href="#">Unique Features</a></li>
-                        <li><a href="#">Image Responsive</a></li>
-                        <li><a href="#">Four columns</a></li>
-                        <li><a href="#">Auto Carousel</a></li>
-                        <li><a href="#">Newsletter Form</a></li>
-                        <li><a href="#">Four columns</a></li>
-                        <li><a href="#">Good Typography</a></li>
-                      </ul>
-                    </li>
-                    <li class="col-md-3">
-                      <ul>
-                        <li class="dropdown-header">Children's</li>
-                        <li><a href="#">Unique Features</a></li>
-                        <li><a href="#">Four columns</a></li>
-                        <li><a href="#">Image Responsive</a></li>
-                        <li><a href="#">Auto Carousel</a></li>
-                        <li><a href="#">Newsletter Form</a></li>
-                        <li><a href="#">Four columns</a></li>
-                        <li><a href="#">Good Typography</a></li>
-                      </ul>
-                    </li>
-                    <li class="col-md-3">
-                      <ul>
-                        <li id="myCarousel" class="carousel slide" data-ride="carousel">
-                          <div class="carousel-inner">
-                            <div class="item active"> <a href="#"><img src="images/menu-banner1.jpg" class="img-responsive" alt="Banner1"></a></div>
-                            <!-- End Item -->
-                            <div class="item"> <a href="#"><img src="images/menu-banner2.jpg" class="img-responsive" alt="Banner1"></a></div>
-                            <!-- End Item -->
-                            <div class="item"> <a href="#"><img src="images/menu-banner3.jpg" class="img-responsive" alt="Banner1"></a></div>
-                            <!-- End Item -->
-                          </div>
-                          <!-- End Carousel Inner -->
-                        </li>
-                        <!-- /.carousel -->
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
-                  <ul class="dropdown-menu">
-                    <li> <a href="contact_us.html">Contact us</a></li>
-                    <li> <a href="cart_page.html">Cart</a></li>
-                    <li> <a href="checkout_page.html">Checkout</a></li>
-                    <li> <a href="product_detail_page.html">Product Detail Page</a></li>
-                    <li> <a href="single_blog.html">Single Post</a></li>
-                  </ul>
-                </li>
-                <li> <a href="about.html">About us</a></li>
-              </ul>
-            </div>
-            <!-- /.nav-collapse -->
-          </nav>
-        </div>
-      </div>
-      <div class="header-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4 col-md-4 col-lg-3">
-              <div class="category">
-                <div class="menu-bar" data-target="#category-menu,#category-menu-responsive" data-toggle="collapse" aria-expanded="true" role="button">
-                  <h4 class="category_text">Top category</h4>
-                  <span class="i-bar"><i class="fa fa-bars"></i></span></div>
-              </div>
-              <div id="category-menu-responsive" class="navbar collapse " aria-expanded="true" style="" role="button">
-                <div class="nav-responsive">
-                  <ul class="nav  main-navigation collapse in">
-                    <li><a href="#">Pharmacy</a></li>
-                    <li><a href="#">Health</a></li>
-                    <li><a href="#">Beauty</a></li>
-                    <li><a href="#">Vitamins</a></li>
-                    <li><a href="#">Sweating</a></li>
-                    <li><a href="#">Coughs & Colds</a></li>
-                    <li><a href="#">Hair Loss</a></li>
-                    <li><a href="#">Weight Loss</a></li>
-                    <li><a href="#">Antifungals</a></li>
-                    <li><a href="#">Pain Relief</a></li>
-                    <li><a href="#">Stop Smoking</a></li>
-                    <li><a href="#">Skin Conditions</a></li>
-                    <li><a href="#">Top Brands</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-<!-- =====  HEADER END  ===== -->
-<!-- =====  CONTAINER START  ===== -->
+	{% else %}
 
-<div class="container">
-      <div class="row ">
-        <div id="column-left" class="col-sm-4 col-md-4 col-lg-3 ">
-          <div id="category-menu" class="navbar collapse mb_40 hidden-sm-down in" aria-expanded="true" style="" role="button">
-            <div class="nav-responsive">
-              <ul class="nav  main-navigation collapse in ">
-                <li><a href="#">Pharmacy</a></li>
-                <li><a href="#">Health</a></li>
-                <li><a href="#">Beauty</a></li>
-                <li><a href="#">Vitamins</a></li>
-                <li><a href="#">Sweating</a></li>
-                <li><a href="#">Coughs & Colds</a></li>
-                <li><a href="#">Hair Loss</a></li>
-                <li><a href="#">Weight Loss</a></li>
-                <li><a href="#">Antifungals</a></li>
-                <li><a href="#">Pain Relief</a></li>
-                <li><a href="#">Stop Smoking</a></li>
-                <li><a href="#">Skin Conditions</a></li>
-                <li><a href="#">Top Brands</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="left-special left-sidebar-widget mb_50">
-            <div class="heading-part mb_20 ">
-              <h2 class="main_title">Top Products</h2>
-            </div>
-            <div id="left-special" class="owl-carousel">
-              <ul class="row ">
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product4.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product4-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product1.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product1-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product2.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product2-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul class="row ">
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product3.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product3-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product5.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product5-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product6.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product6-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul class="row ">
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product7.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product7-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product8.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product8-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product9.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product9-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul class="row ">
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product10.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product10-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product1.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product1-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-                <li class="item product-layout-left mb_20">
-                  <div class="product-list col-xs-4">
-                    <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product2.jpg"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product2-1.jpg"> </a> </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-8">
-                    <div class="caption product-detail">
-                      <h6 class="product-name"><a href="#">Latin literature from 45 BC, making it over old.</a></h6>
-                      <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span> </div>
-                      <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div id="column-right" class="col-sm-8 col-md-8 col-lg-9 mtb_30">     
-        
-        {% block body %}
-        {% endblock %}
-      </div>
-      
 
-<!-- =====  CONTAINER END  ===== -->
-<!-- =====  FOOTER START  ===== -->
-   <!-- =====  FOOTER START  ===== -->
-    <div class="footer pt_60">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 footer-block">
-            <div class="content_footercms_right">
-              <div class="footer-contact">
-                <div class="footer-logo mb_40"> <a href="index.html"> <img src="images/footer-logo.png" alt="HealthCare"> </a> </div>
-                <ul>
-                  <li>B-14 Collins Street West Victoria 2386</li>
-                  <li>(+123) 456 789 - (+024) 666 888</li>
-                  <li>Contact@yourcompany.com</li>
-                </ul>
-                <div class="social_icon">
-                  <ul>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2 footer-block">
-            <h6 class="footer-title ptb_20">Categories</h6>
-            <ul>
-              <li><a href="#">Medicines</a></li>
-              <li><a href="#">Healthcare</a></li>
-              <li><a href="#">Mother & Baby</a></li>
-              <li><a href="#">Vitamins</a></li>
-              <li><a href="#">Toiletries</a></li>
-              <li><a href="#">Skincare</a></li>
-            </ul>
-          </div>
-          <div class="col-md-2 footer-block">
-            <h6 class="footer-title ptb_20">Information</h6>
-            <ul>
-              <li><a href="contact.html">Specials</a></li>
-              <li><a href="#">New Products</a></li>
-              <li><a href="#">Best Sellers</a></li>
-              <li><a href="#">Our Stores</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">About Us</a></li>
-            </ul>
-          </div>
-          <div class="col-md-2 footer-block">
-            <h6 class="footer-title ptb_20">My Account</h6>
-            <ul>
-              <li><a href="#">Checkout</a></li>
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">My Orders</a></li>
-              <li><a href="#">My Credit Slips</a></li>
-              <li><a href="#">My Addresses</a></li>
-              <li><a href="#">My Personal Info</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h6 class="ptb_20">SIGN UP OUR NEWSLETTER</h6>
-            <p class="mt_10 mb_20">For get offers from our favorite brands & get 20% off for next </p>
-            <div class="form-group">
-              <input class="mb_20" type="text" placeholder="Enter Your Email Address">
-              <button class="btn">Subscribe</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom mt_60 ptb_10">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="copyright-part">@ 2017 All Rights Reserved HealthCare</div>
-            </div>
-            <div class="col-sm-6">
-              <div class="payment-icon text-right">
-                <ul>
-                  <li><i class="fa fa-cc-paypal "></i></li>
-                  <li><i class="fa fa-cc-stripe"></i></li>
-                  <li><i class="fa fa-cc-visa"></i></li>
-                  <li><i class="fa fa-cc-discover"></i></li>
-                  <li><i class="fa fa-cc-mastercard"></i></li>
-                  <li><i class="fa fa-cc-amex"></i></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- =====  FOOTER END  ===== -->
-<!-- =====  FOOTER END  ===== -->
-</div>
-<a id="scrollup">Scroll</a>
-<script src="{{ asset('js/jQuery_v3.1.1.min.js') }}"></script>
-<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/jquery.magnific-popup.js') }}"></script>
-<script src="{{ asset('js/jquery.firstVisitPopup.js') }}"></script>
-<script src="{{ asset('js/custom.js') }}"></script>
-</body>
+		<div>
+			<!-- =====  LODER  ===== -->
+			<div class="loder"></div>
+			<div class="wrapper">
+				<div id="subscribe-me" class="modal animated fade in" role="dialog" data-keyboard="true" tabindex="-1">
+					<div class="newsletter-popup">
+						<img class="offer" src="images/newsbg.jpg" alt="offer">
+							<div class="newsletter-popup-static newsletter-popup-top">
+								<div class="popup-text">
+									<div class="popup-title">
+										50%
+										<span>
+											off
+										</span>
+									</div>
+									<div class="popup-desc">
+										<div>
+											Sign up and get 50% off your next Order
+										</div>
+									</div>
+								</div>
+								<form onsubmit="return  validatpopupemail();" method="post">
+									<div class="form-group required">
+										<input type="email" name="email-popup" id="email-popup" placeholder="Enter Your Email" class="form-control input-lg" required/>
+										<button type="submit" class="btn btn-default btn-lg" id="email-popup-submit">
+											Subscribe
+										</button>
+										<label class="checkme">
+											<input type="checkbox" value="" id="checkme"/>
+											Dont show again
+										</label>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- =====  HEADER START  ===== -->
+					<header id="header">
+						<div class="header-top">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-6">
+										<ul class="header-top-left">
+											<li class="language dropdown">
+												<span class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+													<img src="/images/French-icon.gif" alt="img">
+														Francais
+														<span class="caret"></span>
+													</span>
+													<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+														<li>
+															<a href="#">
+																<img src="/images/English-icon.gif" alt="img">
+																	English
+																</a>
+															</li>
+															<li>
+																<a href="#">
+																	<img src="/images/French-icon.gif" alt="img">
+																		French
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<img src="images/German-icon.gif" alt="img">
+																			German
+																		</a>
+																	</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+													<div class="col-sm-6">
+														<ul class="header-top-right text-right">
+															{% if not app.user %}
+																<li class="account">
+																	<a href="/login">
+																		My Account
+																	</a>
+																</li>
+															{% else %}
+																<li class="account">
+																	<a href="/logout">
+																		Deconnexion (
+																		{{app.user.firstname}}
+																		{{app.user.lastname}}
+																		)
+																	</a>
+																</li>
+															{% endif %}
+															{% if app.user and ("ROLE_ADMIN" in app.user.roles)   %}
+																<li class="sitemap">
+																	<a href="/admin">
+																		Interface Admin
+																	</a>
+																</li>
+															{% endif %}
+															<li class="cart">
+																<a href="{{ path('panier') }}">
+																	Mon Panier
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="header">
+											<div class="container">
+												<nav class="navbar">
+													<div class="navbar-header mtb_20">
+														<a class="navbar-brand" href="/">
+															<img style="height:70px ;padding-left:50px" alt="HealthCared" src="/images/logo.png"></a>
+														</div>
+														<div class="header-right pull-right mtb_50">
+															<button class="navbar-toggle pull-left" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+																<span class="i-bar">
+																	<i class="fa fa-bars"></i>
+																</span>
+															</button>
+															<a class="nav-link" href="{{ path('panier') }}">
 
-</html>
+																<div
+																	class="shopping-icon">{#  <div class="cart-item " data-target="#cart-dropdown" data-toggle="collapse" aria-expanded="true" role="button">Item's : <span class="cart-qty">02</span></div>#}
+																</div>
+															</a>
+
+															<div class="main-search pull-right">
+																<div
+																	class="search-overlay">
+																	<!-- Close Icon -->
+																	<a href="javascript:void(0)" class="search-overlay-close"></a>
+																	<!-- End Close Icon -->
+																	<div
+																		class="container">
+																		<!-- Search Form -->
+																		<form role="search" id="searchform" action="/search" method="get">
+																			<label class="h5 normal search-input-label">
+																				Enter keywords To Search Entire Store
+																			</label>
+																			<input value="" name="q" placeholder="Search here..." type="search">
+																				<button type="submit"></button>
+																			</form>
+																			<!-- End Search Form -->
+																		</div>
+																	</div>
+																	<div class="header-search">
+																		<a id="search-overlay-btn"></a>
+																	</div>
+																</div>
+															</div>
+															<div class="collapse navbar-collapse js-navbar-collapse pull-right">
+																<ul id="menu" class="nav navbar-nav">
+																	<li>
+																		<a href="/">
+																			Home
+																		</a>
+																	</li>
+																	<li>
+																		<a href="{{ path('search')}}">
+																			Shop
+																		</a>
+																	</li>
+
+																	{{ render(controller('App\\Controller\\CatalogueController::megaMenu')) }}
+																	{% if app.user %}
+																	<li class="dropdown">
+																		<a href="" class="dropdown-toggle" data-toggle="dropdown">
+																			Personnel
+																		</a>
+																		<ul class="dropdown-menu">
+																			<li>
+																				<a href="{{path('personnel')}}">
+																					Données
+																				</a>
+																			</li>
+																			<li>
+																				<a href="{{path('commandall')}}">
+																					Commandes
+																				</a>
+																			</li>
+																		</ul>
+																	</li>
+																	{% endif %}
+																</ul>
+															</div>
+															<!-- /.nav-collapse -->
+														</nav>
+													</div>
+												</div>
+												<div class="header-bottom">
+													<div class="container">
+														<div class="row">
+															<div class="col-sm-4 col-md-4 col-lg-3">
+																<div class="category">
+																	<div class="menu-bar" data-target="#category-menu,#category-menu-responsive" data-toggle="collapse" aria-expanded="true" role="button">
+																		<h4 class="category_text">
+																			Top category
+																		</h4>
+																		<span class="i-bar">
+																			<i class="fa fa-bars"></i>
+																		</span>
+																	</div>
+																</div>
+																<div id="category-menu-responsive" class="navbar collapse " aria-expanded="true" style="" role="button">
+																	<div class="nav-responsive">
+																		<ul class="nav  main-navigation collapse in">
+																			<li>
+																				<a href="#">
+																					Pharmacy
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Health
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Beauty
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Vitamins
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Sweating
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Coughs & Colds
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Hair Loss
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Weight Loss
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Antifungals
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Pain Relief
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Stop Smoking
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Skin Conditions
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#">
+																					Top Brands
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																	{# {% include 'components/searchfilter.html.twig' %} #}
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- =====  HEADER END  ===== -->
+											<!-- =====  CONTAINER START  ===== -->
+											<div class="container">
+												<div class="row ">
+													<div id="column-left" class="col-sm-4 col-md-4 col-lg-3 ">
+
+														<div id="category-menu" class="navbar collapse mb_40 hidden-sm-down in" aria-expanded="true" style="" role="button">
+															<div class="nav-responsive">
+																<ul class="nav  main-navigation collapse in ">
+																	<li>
+																		<a href="#">
+																			Pharmacy
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Health
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Beauty
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Vitamins
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Sweating
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Coughs & Colds
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Hair Loss
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Weight Loss
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Antifungals
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Pain Relief
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Stop Smoking
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Skin Conditions
+																		</a>
+																	</li>
+																	<li>
+																		<a href="#">
+																			Top Brands
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														{{ render(controller('App\\Controller\\SoldController::top_products',{ 'max': 3 })) }}
+													</div>
+													<div id="column-right" class="col-sm-8 col-md-8 col-lg-9 mtb_30">
+
+														{% block body %}
+														<!-- =====  BANNER STRAT  ===== -->
+															<!-- =====  BANNER END  ===== -->
+															<!-- =====  SUB BANNER  STRAT ===== -->
+															<!-- =====  SUB BANNER END  ===== -->
+															<!-- =====  PRODUCT TAB  ===== -->
+															<!-- =====  PRODUCT TAB  END ===== -->
+															<!-- =====  SUB BANNER  STRAT ===== -->
+															<!-- =====  SUB BANNER END  ===== -->
+															<!-- =====  sale product  ===== -->
+															<!-- =====  sale product end ===== -->
+															<!-- =====  SUB BANNER  STRAT ===== -->
+															<!-- =====  SUB BANNER END  ===== -->
+															<!-- =====  product ===== -->
+															<!-- =====  product end  ===== -->
+															<!-- =====  Blog ===== -->
+														{%  endblock %}
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- =====  CONTAINER END  ===== -->
+										<!-- =====  FOOTER START  ===== -->
+										<div class="footer pt_60">
+											<div class="container">
+												<div class="row">
+													<div class="col-md-3 footer-block">
+														<div class="content_footercms_right">
+															<div class="footer-contact">
+																<div class="footer-logo mb_40">
+																	<a href="index.html">
+																		<img src="/images/footer-logo.png" alt="HealthCare"></a>
+																	</div>
+																	<ul>
+																		<li>
+																			B-14 Collins Street West Victoria 2386
+																		</li>
+																		<li>
+																			(+123) 456 789 - (+024) 666 888
+																		</li>
+																		<li>
+																			Contact@yourcompany.com
+																		</li>
+																	</ul>
+																	<div class="social_icon">
+																		<ul>
+																			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+																			<li><a href="#"><i class="fa fa-google"></i></a></li>
+																			<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+																			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+																			<li><a href="#"><i class="fa fa-rss"></i></a></li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-2 footer-block">
+															<h6 class="footer-title ptb_20">
+																Categories
+															</h6>
+															<ul>
+																<li><a href="#">Medicines</a></li>
+																<li><a href="#">Healthcare</a></li>
+																<li><a href="#">Mother & Baby</a></li>
+																<li><a href="#">Vitamins</a></li>
+																<li><a href="#">Toiletries</a></li>
+																<li><a href="#">Skincare</a></li>
+															</ul>
+														</div>
+														<div class="col-md-2 footer-block">
+															<h6 class="footer-title ptb_20">
+																Information
+															</h6>
+															<ul>
+																<li><a href="contact.html">Specials</a></li>
+																<li><a href="#">New Products</a></li>
+																<li><a href="#">Best Sellers</a></li>
+																<li><a href="#">Our Stores</a></li>
+																<li><a href="#">Contact Us</a></li>
+																<li><a href="#">About Us</a></li>
+															</ul>
+														</div>
+														<div class="col-md-2 footer-block">
+															<h6 class="footer-title ptb_20">
+																My Account
+															</h6>
+															<ul>
+																<li><a href="#">Checkout</a></li>
+																<li><a href="#">My Account</a></li>
+																<li><a href="#">My Orders</a></li>
+																<li><a href="#">My Credit Slips</a></li>
+																<li><a href="#">My Addresses</a></li>
+																<li><a href="#">My Personal Info</a></li>
+															</ul>
+														</div>
+														<div class="col-md-3">
+															<h6 class="ptb_20">
+																SIGN UP OUR NEWSLETTER
+															</h6>
+															<p class="mt_10 mb_20">
+																For get offers from our favorite brands & get 20% off for next
+															</p>
+															<div class="form-group">
+																<input class="mb_20" type="text" placeholder="Enter Your Email Address">
+																	<button class="btn">
+																		Subscribe
+																	</button>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="footer-bottom mt_60 ptb_10">
+														<div class="container">
+															<div class="row">
+																<div class="col-sm-6">
+																	<div class="copyright-part">
+																		@ 2021 All Rights Reserved TuniPharma
+																	</div>
+																</div>
+																<div class="col-sm-6">
+																	<div class="payment-icon text-right">
+																		<ul>
+																			<li>
+																				<i class="fa fa-cc-paypal "></i>
+																			</li>
+																			<li>
+																				<i class="fa fa-cc-stripe"></i>
+																			</li>
+																			<li>
+																				<i class="fa fa-cc-visa"></i>
+																			</li>
+																			<li>
+																				<i class="fa fa-cc-discover"></i>
+																			</li>
+																			<li>
+																				<i class="fa fa-cc-mastercard"></i>
+																			</li>
+																			<li>
+																				<i class="fa fa-cc-amex"></i>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- =====  FOOTER END  ===== -->
+											</div>
+											<a id="scrollup">
+												Scroll
+											</a>
+										{% endif %}
+										<script defer src="/js/jQuery_v3.1.1.min.js"></script>
+										<script defer src="/js/owl.carousel.min.js"></script>
+										<script defer src="/js/bootstrap.min.js"></script>
+										<script defer src="/js/jquery.magnific-popup.js"></script>
+										<script defer src="/js/jquery.firstVisitPopup.js"></script>
+										<script defer src="/js/custom.js"></script>
+									</body>
+
+								</html>

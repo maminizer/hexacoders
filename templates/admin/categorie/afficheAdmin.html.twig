@@ -1,0 +1,134 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+  <div class="col-md-12">
+        <div class="main-card mb-3 card">
+            <div class="card-header">List Categorie
+
+            </div>
+            <div class="table-responsive">
+
+                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th style="padding-left: 2%">Id</th>
+                        <th>catalogue</th>
+                        <th style="padding-left: 3%">nom</th>
+                        <th style="padding-left: 5%">description</th>
+                        <th style="padding-left: 4%">image</th>
+                      
+                    </tr>
+                    </thead>
+                    <tbody>
+                 
+                    {% for d in data %}
+
+                    <tr>
+                        <td class="text-center text-muted">{{ d.id }}</td>
+                        <td>
+                            <div class="widget-content p-0">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left flex2">
+                                        <div class="widget-heading">{{ d.catalogue }}</div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                          <td class="text-center text-muted">{{ d.nom }}</td>
+                        
+                        <td class="text-center">
+                           
+                            <div >{{ d.description }}</div>
+                         
+                              
+                        </td>
+                         <td>
+                            <div class="widget-content p-0">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left flex2">
+                                        <div class="widget-heading"><img src="{{ asset('uploads/images/' ~ d.image) }}"  alt ="" style = "width:100px ; height:100px"></div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                   
+                        <td class="text-center">
+                        <a href="{{ path('delete',{'id':d.id}) }}" class="btn btn-primary">supprimer</a>
+
+                         <a href="{{ path('updateCategorie',{'id':d.id}) }}" class="btn btn-success">modifier</a>
+
+                            
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                   
+                </table>
+   <a href="{{ path('AjoutCategorie')}}" class="btn btn-primary">ajouter Categorie</a>
+            </div>
+        </div>
+    </div>
+     <link href="{{ asset('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i') }}" rel="stylesheet">
+
+  
+    <script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+  <script>
+     $( document ).ready(function() {
+                $("#search3").keyup(function(e){
+                    /* La variable value va prendre la valeur insérer dans le champ de texte
+                    afin d’effectuer la recherche */
+                    var value = $(this).val();
+                    /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                    « search » pour faire la recherche */
+                    $.ajax({
+                        /* l’url est une chaine de caractères contenant l’adresse où la requête est
+                        envoyée */
+                        url : "{{ path('searchCategoriex') }}",
+                        /* La méthode utilisée pour transférer les données est GET */
+                        type : 'GET',
+                        /*Ici search value va prendre la chaine entrée par un utilisateur dans la
+                        zone de recherche et sera placée après l’url */
+                        data: {
+                            'searchValue' : value
+                        },
+                        /*Cette fonction permet de vider le contenu du tableau pour recevoir le
+                        nouveau contenu*/
+                        success : function(response){
+                            if(response){
+                                $("#search1").empty();
+
+                                $.each(JSON.parse(response), function(i, obj) {
+                                    $("#all").hide();
+                                    $("#search1").append(
+                                         '<tr>' +
+                                        '<td> '+obj.id+' </td>' +
+                                        '<td><div class="widget-content p-0"><div><div><div> '+obj.catalogue+'</div></div></div></div> </td>' +
+                                        '<td> '+obj.nom+' </td>' +
+                                        '<td><div> '+obj.description+'</div> </td>' +
+                                         '<td><div class="widget-content p-0"><div><div><div> ' + '<img alt ="" style = "width:100px ; height:100px" src="/uploads/images/'+obj.image+'">' +'</div></div></div></div></td>'   +
+                                        '<td> '+obj.offre+' </td>' +
+                                       '<td><a class="btn btn-success" href="Delete'+obj.id+'">Supprimer</a>' +
+                                        '<a class="btn btn-primary" href="updateCategorie'+obj.id+'">Modifer</a></td></tr>' 
+                                        
+                                    
+                                        );
+                                });
+                            }
+                            else
+                            {
+                                $('#all').show();
+                                $('#search1').empty();
+                                $('#search1').fadeIn('fast');
+                            }
+
+                        },
+                    });
+                    return false;
+                });
+            });
+       
+</script>
+{% endblock %}

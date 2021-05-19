@@ -1,29 +1,31 @@
 security:
     encoders:
         App\Entity\User:
-           algorithm: bcrypt
+            algorithm: auto
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
-        in_database:
-            entity: 
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
                 class: App\Entity\User
-                property : email
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
-            provider: in_database
-
-            form_login:
-                login_path: security_login
-                check_path : security_login
-
+            anonymous: lazy
+            provider: app_user_provider
+            guard:
+                authenticators:
+                    - App\Security\LoginAuthenticator
             logout:
-                path: security_logout
-                target: blog
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+            json_login:
+                check_path: /login1
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -34,5 +36,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/profile, roles: ROLE_USER }
+        # - { path: ^/login  , roles: ROLE_BANNED }
+    role_hierarchy:
+         #   ROLE_USER: ROLE_BANNED
+            ROLE_EDITOR: ROLE_USER
+            ROLE_ADMIN: ROLE_EDITOR

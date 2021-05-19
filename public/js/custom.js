@@ -82,7 +82,7 @@ function gl_view() {
 }
 /* ===== Timer  =====   */
 function makeTimer() {
-    var endTime = new Date("August 10, 2018 12:00:00 PDT");
+    var endTime = new Date("April 5 2021 00:00:00 UTC");
     var endTime = (Date.parse(endTime)) / 1000;
     var now = new Date();
     var now = (Date.parse(now) / 1000);
@@ -100,6 +100,9 @@ function makeTimer() {
     $(".hours").html(hours + "<span>Hours</span>");
     $(".minutes").html(minutes + "<span>Min</span>");
     $(".seconds").html(seconds + "<span>Sec</span>");
+    
+    var offre = document.getElementById('sale-product');
+    if(hours == "00" && minutes =="00" && seconds =="00") {offre.remove();}
 }
 setInterval(function() { makeTimer(); }, 1000);
 /* ===== Login Register Tab  =====   */

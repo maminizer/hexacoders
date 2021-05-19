@@ -1,0 +1,25 @@
+<div class="left-special left-sidebar-widget mb_50">
+    <div class="heading-part mb_20 ">
+        <h2 class="main_title">Top Products</h2>
+    </div>
+    <div id="left-special" class="owl-carousel">
+        <ul class="row ">
+            {% for product in prods %}
+            <li class="item product-layout-left mb_20">
+                <div class="product-list col-xs-4">
+                    <div class="product-thumb">
+                        <div class="image product-imageblock"> <a href="{{ path('AfficheProduitClientDetaill' , { 'id' : product.idProduit}) }}"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="{{ asset('uploads/images/') ~ '/' ~ product.image }}"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="{{ asset('uploads/images/') ~ '/' ~ product.image }}"> </a> </div>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="caption product-detail">
+                        <h6 class="product-name"><a href="{{ path('AfficheProduitClientDetaill' , { 'id' : product.idProduit}) }}">{{ product.title }}</a></h6>
+                        <span class="price"><span class="amount"><span class="currencySymbol">$</span>{{ product.prixUnitaire }}</span>
+                      </span>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

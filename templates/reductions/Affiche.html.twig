@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+{%  block body   %}
+
+
+<html>
+
+
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+<h1>Ajouter Offre</h1>
+{{ form_errors(form.Taux_reduction) }}
+{{ form_label(form.Taux_reduction," Taux de réduction") }}
+{{ form_widget(form.Taux_reduction) }}
+{{ form_end(form) }}
+
+
+
+
+
+
+
+
+</html>
+
+
+{% endblock %}
+

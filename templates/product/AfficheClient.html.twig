@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+    <h1> la liste des produits
+    </h1>
+
+    {% include "components/gridproduit.html.twig"%}
+
+
+{% endblock %}
+
+{% block filterLeft %}
+    <div class="filter-block">
+        <div class="filter left-sidebar-widget mb_50">
+            <div class="heading-part mtb_20 ">
+                <h2 class="main_title">Refinr Search</h2>
+            </div>
+            <div class="filter-block">
+                <div class="list-group-item mb_10">
+                    {{ form_start(formFiltre) }}
+                    <div id="filter-group1">
+                        {{ form_label(formFiltre.enVente, "Disponibilité du Produit") }}
+                        <div class="checkbox" >
+                            <label> En Vente:  {{ form_row(formFiltre.enVente) }}</label>
+                        </div>
+                    </div>
+                    <div id="filter-group1">
+                        <label for="amount">Price range:</label>
+                        <div class="row" >
+                            <div class="col-md-6">
+                                {{ form_row(formFiltre.min) }}
+
+                            </div>
+                            <div class="col-md-6">
+                                {{ form_row(formFiltre.max) }}
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn">Filtrer</button>
+                    {{ form_end(formFiltre) }}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
+

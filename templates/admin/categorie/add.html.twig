@@ -1,0 +1,12 @@
+      {% extends 'admin/base.html.twig' %}
+{% block body %}
+  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                    {{ form_row(form.catalogue)  }}
+
+                    {{ form_row(form.nom, {'attr' : { 'placeholder' : "Titre de categorie"} })    }}
+
+                    {{ form_row(form.description, {'attr' : { 'placeholder' : "Contenu de categorie"} })    }}
+                    {{ form_row(form.image, {'attr' : { 'placeholder' : "Image de categorie"} })    }}
+
+                    {{ form_end(form) }}
+                    {% endblock %}

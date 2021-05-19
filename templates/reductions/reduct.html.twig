@@ -1,0 +1,63 @@
+{% extends 'admin/base.html.twig' %}
+{%  block body   %}
+
+
+    <html>
+
+
+    <head></head>
+    <body>
+
+    <h1>Liste Des Products </h1>
+    <table border="1">
+        <tr>
+            <th>ID de Produit </th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Quantite</th>
+            <th>Taux de reduction</th>
+            <th>Prix aprés Reduction</th>
+            <th>MODIFIER</th>
+
+
+
+
+        </tr>
+        <tr  {% for o in Offre %}
+                {% for p in o.Products %}>
+
+
+            <td>{{ p.id }}</td>
+            <td>{{ p.title }}</td>
+            <td>{{ p.price }}</td>
+            <td>{{ p.Quantity }}</td>
+            <td>{{ o.taux_reduction }}</td>
+            <td> {{ p.price*(100-o.taux_reduction)/100 }} </td>
+            <td> <a href="{{ path('modifier',{'id': o.id}) }}"> Modifier Offre </a>
+
+
+
+        </tr {% endfor %}
+                {% endfor %} >
+
+
+
+
+
+
+    </table>
+
+
+
+
+
+
+    </body>
+
+
+
+
+
+    </html>
+
+{%  endblock body   %}
